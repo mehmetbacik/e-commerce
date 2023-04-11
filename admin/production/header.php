@@ -1,3 +1,7 @@
+<?php 
+    require_once '../system/connect.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
