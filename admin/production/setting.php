@@ -29,87 +29,87 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form action="system/work.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        <form action="../system/work.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Title</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_title" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Description</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <textarea required name="setting_description" class="form-control col-md-7 col-xs-12"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Author</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="author">Author</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_author" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Phone Number</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone_number">Phone Number</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_tel" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">GSM</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gsm">GSM</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_gsm" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Fax</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fax">Fax</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_fax" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Email</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="mail" name="setting_mail" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">District</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="district">District</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_district" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Country</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="country">Country</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_country" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Adress</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="adress">Adress</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <textarea required name="setting_adress" class="form-control col-md-7 col-xs-12"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Time</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="time">Time</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_time" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Maps</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="maps">Maps</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <textarea required name="setting_maps" class="form-control col-md-7 col-xs-12"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Analystic</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="analystic">Analystic</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <textarea required name="setting_analystic" class="form-control col-md-7 col-xs-12"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">HelpDesk</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="desk">HelpDesk</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <textarea required name="setting_desk" class="form-control col-md-7 col-xs-12"></textarea>
                                 </div>
@@ -121,51 +121,45 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Facebook</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="facebook">Facebook</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_facebook" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Twitter</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="twitter">Twitter</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_twitter" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Google</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="google">Google</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_google" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Youtube</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="youtube">Youtube</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_youtube" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">SMTP Host</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="smtphost">SMTP Host</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_smtphost" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">SMTP Password</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="smtppassword">SMTP Password</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="password" name="setting_smtppassword" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">SMTP Port</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="smtpport">SMTP Port</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_smtpport" value="" required class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">SMTP Password</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="setting_smtppassword" value="" required class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="ln_solid"></div>
