@@ -107,19 +107,19 @@ echo "</pre>";*/
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="maps">Maps</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea required name="setting_maps" class="form-control col-md-7 col-xs-12"><?php echo $settingbring['setting_maps']; ?></textarea>
+                                    <textarea name="setting_maps" class="form-control col-md-7 col-xs-12"><?php echo $settingbring['setting_maps']; ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="analystic">Analystic</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea required name="setting_analystic" class="form-control col-md-7 col-xs-12"><?php echo $settingbring['setting_analystic']; ?></textarea>
+                                    <textarea name="setting_analystic" class="form-control col-md-7 col-xs-12"><?php echo $settingbring['setting_analystic']; ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="desk">HelpDesk</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea required name="setting_desk" class="form-control col-md-7 col-xs-12"><?php echo $settingbring['setting_desk']; ?></textarea>
+                                    <textarea name="setting_desk" class="form-control col-md-7 col-xs-12"><?php echo $settingbring['setting_desk']; ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -149,19 +149,19 @@ echo "</pre>";*/
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="smtphost">SMTP Host</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="setting_smtphost" value="<?php echo $settingbring['setting_smtphost']; ?>" required class="form-control col-md-7 col-xs-12">
+                                    <input type="text" name="setting_smtphost" value="<?php echo $settingbring['setting_smtphost']; ?>" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="smtppassword">SMTP Password</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="password" name="setting_smtppassword" value="<?php echo $settingbring['setting_smtppassword']; ?>" required class="form-control col-md-7 col-xs-12">
+                                    <input type="password" name="setting_smtppassword" value="<?php echo $settingbring['setting_smtppassword']; ?>" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="smtpport">SMTP Port</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="setting_smtpport" value="<?php echo $settingbring['setting_smtpport']; ?>" required class="form-control col-md-7 col-xs-12">
+                                    <input type="text" name="setting_smtpport" value="<?php echo $settingbring['setting_smtpport']; ?>" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="ln_solid"></div>
