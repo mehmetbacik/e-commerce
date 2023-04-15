@@ -37,6 +37,23 @@ echo "</pre>";*/
                     </div>
                     <div class="x_content">
                         <br />
+                        <?php
+                            if ($_SESSION['status']=="success") {
+                        ?>
+                            <div class="alert alert-success">
+                                <p>Update successful</p>
+                            </div>
+                        <?php
+                            unset($_SESSION['status']);
+                            } else if ($_SESSION['status']=="error") {
+                        ?>
+                            <div class="alert alert-danger">
+                                <p>Update error</p>
+                            </div>
+                        <?php
+                            unset($_SESSION['status']);
+                            }
+                        ?>
                         <form action="../system/work.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title</label>

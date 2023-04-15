@@ -1,4 +1,6 @@
 <?php 
+session_start();
+error_reporting(0);
 require_once 'connect.php';
 /*echo "<pre>";
 print_r($_POST);
@@ -29,7 +31,7 @@ if (isset($_POST['setting_save'])) {
         setting_smtpport=:setting_smtpport
         WHERE setting_id=1
     ");
-    $sql->execute(
+    $update=$sql->execute(
         [
             'setting_title' => $_POST['setting_title'],
             'setting_description' => $_POST['setting_description'],
@@ -54,5 +56,15 @@ if (isset($_POST['setting_save'])) {
             'setting_smtpport' => $_POST['setting_smtpport']
         ]
     );
+
+    if($update) {
+        $_SESSION['status']="success";
+        Header("Location:../production/setting.php");
+        exit;
+    } else {
+        $_SESSION['status']="error";
+        Header("Location:../production/setting.php");
+        exit;
+    }
 }
 ?>
