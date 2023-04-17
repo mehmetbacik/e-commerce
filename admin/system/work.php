@@ -10,6 +10,7 @@ if (isset($_POST['setting_save'])) {
     $sql=$db->prepare("UPDATE setting SET 
         setting_title=:setting_title,
         setting_description=:setting_description,
+        setting_keywords=:setting_keywords,
         setting_author=:setting_author,
         setting_tel=:setting_tel,
         setting_gsm=:setting_gsm,
@@ -35,6 +36,7 @@ if (isset($_POST['setting_save'])) {
         [
             'setting_title' => $_POST['setting_title'],
             'setting_description' => $_POST['setting_description'],
+            'setting_keywords' => $_POST['setting_keywords'],
             'setting_author' => $_POST['setting_author'],
             'setting_tel' => $_POST['setting_tel'],
             'setting_gsm' => $_POST['setting_gsm'],

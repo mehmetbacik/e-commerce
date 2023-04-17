@@ -1,9 +1,19 @@
+<?php
+    require_once 'admin/system/connect.php';
+	$sql=$db->prepare("SELECT * FROM setting WHERE setting_id=:id");
+	$sql->execute(['id' => 1]);
+	$settingbring=$sql->fetch(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Shopping Theme</title>
+	<meta name="description" content="<?php echo $settingbring['setting_description']; ?>">
+	<meta name="keywords" content="<?php echo $settingbring['setting_keywords']; ?>">
+	<meta name="author" content="<?php echo $settingbring['setting_author']; ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo $settingbring['setting_title']; ?></title>
 
     <!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700' rel='stylesheet' type='text/css'>
@@ -33,7 +43,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-6 col-md-4 main-logo">
-					<a href="index-1.htm"><img src="images\logo.png" alt="logo" class="logo img-responsive"></a>
+					<a href="index.php"><img src="images\logo.png" alt="logo" class="logo img-responsive"></a>
 				</div>
 				<div class="col-md-8">
 					<div class="pushright">

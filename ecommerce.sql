@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 12 Nis 2023, 21:52:36
+-- Üretim Zamanı: 17 Nis 2023, 22:19:42
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -33,6 +33,7 @@ CREATE TABLE `setting` (
   `setting_logo` varchar(150) COLLATE utf8_turkish_ci DEFAULT NULL,
   `setting_title` varchar(250) COLLATE utf8_turkish_ci DEFAULT NULL,
   `setting_description` varchar(250) COLLATE utf8_turkish_ci DEFAULT NULL,
+  `setting_keywords` varchar(250) CHARACTER SET utf8 COLLATE utf8_turkish_ci DEFAULT NULL,
   `setting_author` varchar(100) COLLATE utf8_turkish_ci DEFAULT NULL,
   `setting_tel` varchar(50) COLLATE utf8_turkish_ci DEFAULT NULL,
   `setting_gsm` varchar(50) COLLATE utf8_turkish_ci DEFAULT NULL,
@@ -59,8 +60,8 @@ CREATE TABLE `setting` (
 -- Tablo döküm verisi `setting`
 --
 
-INSERT INTO `setting` (`setting_id`, `setting_logo`, `setting_title`, `setting_description`, `setting_author`, `setting_tel`, `setting_gsm`, `setting_fax`, `setting_mail`, `setting_district`, `setting_country`, `setting_adress`, `setting_time`, `setting_maps`, `setting_analystic`, `setting_desk`, `setting_facebook`, `setting_twitter`, `setting_google`, `setting_youtube`, `setting_smtphost`, `setting_smtppassword`, `setting_smtpport`, `setting_live`) VALUES
-(1, 'logo.png', 'E-Commerce', 'E-commerce shopping page', 'MBCK', '02120000000', '05000000000', '02160000000', 'admin@ecommerce.com', 'Kadıköy', 'İstanbul', 'Bağdat Cad., No:2B, Kadıköy, İstanbul, Türkiye', '09:00 - 18:00', NULL, NULL, NULL, 'facebook_adresi', 'twitter_adresi', 'google_adresi', 'youtube_adresi', NULL, NULL, NULL, '1');
+INSERT INTO `setting` (`setting_id`, `setting_logo`, `setting_title`, `setting_description`, `setting_keywords`, `setting_author`, `setting_tel`, `setting_gsm`, `setting_fax`, `setting_mail`, `setting_district`, `setting_country`, `setting_adress`, `setting_time`, `setting_maps`, `setting_analystic`, `setting_desk`, `setting_facebook`, `setting_twitter`, `setting_google`, `setting_youtube`, `setting_smtphost`, `setting_smtppassword`, `setting_smtpport`, `setting_live`) VALUES
+(1, 'logo.png', 'E-Commerce Page', 'E-commerce shopping page', 'E-Commerce, Shopping', 'MBCK', '02120000000', '05000000000', '02160000000', 'admin@ecommerce.com', 'Kadıköy', 'İstanbul', 'Bağdat Cad., No:2B, Kadıköy, İstanbul, Türkiye', '09:00 - 18:00', 'Maps test code', 'Analystic test code', 'Helpdesk test code', 'facebook_adresi', 'twitter_adresi', 'google_adresi', 'youtube_adresi', 'host', '123456789', 'port', '1');
 
 --
 -- Dökümü yapılmış tablolar için indeksler

@@ -38,9 +38,9 @@
 						<div class="title-widget-cursive">Shopping</div>
 					</div>
 					<ul class="contact-widget">
-						<li class="fphone">+387 123 456, +387 123 456 <br> +387 123 456</li>
-						<li class="fmobile">+387-123-456-1<br>+387-123-456-2</li>
-						<li class="fmail lastone">your@email.com<br>customer.care@mail.com</li>
+						<li class="fphone"><?php echo $settingbring['setting_tel']; ?></li>
+						<li class="fmobile"><?php echo $settingbring['setting_gsm']; ?></li>
+						<li class="fmail lastone"><?php echo $settingbring['setting_mail']; ?></li>
 					</ul>
 				</div><!--footer contact widget-->
 			</div>
@@ -58,7 +58,7 @@
 						<li><a href="order.htm">Completed Orders</a></li>
 						<li><a href="contact.htm">Contact us</a></li>
 					</ul><!--footer nav-->
-					<div class="f-credit">&copy;All rights reserved by <a href="#">yoursite.com</a></div>
+					<div class="f-credit">&copy;All rights reserved by <a href="#"><?php echo $settingbring['setting_author']; ?></a></div>
 					<a href=""><div class="payment visa"></div></a>
 					<a href=""><div class="payment paypal"></div></a>
 					<a href=""><div class="payment mc"></div></a>
@@ -67,10 +67,10 @@
 				<div class="col-md-3"><!--footer Share-->
 					<div class="followon">Follow us on</div>
 					<div class="fsoc">
-						<a href="http://twitter.com/minimalthemes" class="ftwitter">twitter</a>
-						<a href="http://www.facebook.com/pages/Minimal-Themes/264056723661265" class="ffacebook">facebook</a>
-						<a href="#" class="fflickr">flickr</a>
-						<a href="#" class="ffeed">feed</a>
+						<a href="http://<?php echo $settingbring['setting_twitter']; ?>" class="ftwitter">twitter</a>
+						<a href="http://<?php echo $settingbring['setting_facebook']; ?>" class="ffacebook">facebook</a>
+						<a href="http://<?php echo $settingbring['setting_youtube']; ?>" class="fflickr">youtube</a>
+						<a href="http://<?php echo $settingbring['setting_google']; ?>" class="ffeed">google</a>
 						<div class="clearfix"></div>
 					</div>
 					<div class="clearfix"></div>

@@ -68,6 +68,12 @@ echo "</pre>";*/
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="keywords">Keywords</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea required name="setting_keywords" class="form-control col-md-7 col-xs-12"><?php echo $settingbring['setting_keywords']; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="author">Author</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="setting_author" value="<?php echo $settingbring['setting_author']; ?>" required class="form-control col-md-7 col-xs-12">
