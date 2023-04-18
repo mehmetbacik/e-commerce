@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 17 Nis 2023, 22:19:42
+-- Üretim Zamanı: 18 Nis 2023, 21:47:27
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Veritabanı: `ecommerce`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `about`
+--
+
+CREATE TABLE `about` (
+  `about_id` int(11) NOT NULL,
+  `about_title` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
+  `about_content` text COLLATE utf8_turkish_ci NOT NULL,
+  `about_video` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
+  `about_vision` varchar(500) COLLATE utf8_turkish_ci NOT NULL,
+  `about_mission` varchar(500) COLLATE utf8_turkish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `about`
+--
+
+INSERT INTO `about` (`about_id`, `about_title`, `about_content`, `about_video`, `about_vision`, `about_mission`) VALUES
+(1, 'About Title', '<p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </strong>Proin sed ex vel elit luctus euismod. Donec commodo a massa quis ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum placerat massa, eu ornare nibh sagittis sit amet. Nullam convallis cursus scelerisque. Ut iaculis sollicitudin dolor, vel lobortis leo tempus in. Donec rutrum justo id viverra convallis. Fusce gravida ullamcorper posuere.</p>', 'jNQXAC9IVRw', 'Nullam ut varius sapien. In quis urna ut felis hendrerit vehicula tincidunt eu mi. Donec varius varius sem at bibendum. Mauris placerat libero ut accumsan tempor. Praesent eu sodales urna. Morbi sed metus convallis, egestas nisl vel, tristique ante.', 'Nullam ut varius sapien. In quis urna ut felis hendrerit vehicula tincidunt eu mi. Donec varius varius sem at bibendum. Mauris placerat libero ut accumsan tempor. Praesent eu sodales urna. Morbi sed metus convallis, egestas nisl vel, tristique ante.');
 
 -- --------------------------------------------------------
 
@@ -66,6 +88,12 @@ INSERT INTO `setting` (`setting_id`, `setting_logo`, `setting_title`, `setting_d
 --
 -- Dökümü yapılmış tablolar için indeksler
 --
+
+--
+-- Tablo için indeksler `about`
+--
+ALTER TABLE `about`
+  ADD PRIMARY KEY (`about_id`);
 
 --
 -- Tablo için indeksler `setting`

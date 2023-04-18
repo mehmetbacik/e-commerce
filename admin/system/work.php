@@ -6,6 +6,7 @@ require_once 'connect.php';
 print_r($_POST);
 echo "</pre>";*/
 
+/*Setting*/
 if (isset($_POST['setting_save'])) {
     $sql=$db->prepare("UPDATE setting SET 
         setting_title=:setting_title,
@@ -69,4 +70,37 @@ if (isset($_POST['setting_save'])) {
         exit;
     }
 }
+/*Setting*/
+
+/*About*/
+if (isset($_POST['about_save'])) {
+    $sql=$db->prepare("UPDATE about SET 
+        about_title=:about_title,
+        about_content=:about_content,
+        about_video=:about_video,
+        about_vision=:about_vision,
+        about_mission=:about_mission
+        WHERE about_id=1
+    ");
+    $update=$sql->execute(
+        [
+            'about_title' => $_POST['about_title'],
+            'about_content' => $_POST['about_content'],
+            'about_video' => $_POST['about_video'],
+            'about_vision' => $_POST['about_vision'],
+            'about_mission' => $_POST['about_mission']
+        ]
+    );
+
+    if($update) {
+        $_SESSION['status']="success";
+        Header("Location:../production/about.php");
+        exit;
+    } else {
+        $_SESSION['status']="error";
+        Header("Location:../production/about.php");
+        exit;
+    }
+}
+/*About*/
 ?>

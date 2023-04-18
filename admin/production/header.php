@@ -33,9 +33,11 @@
     <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- CKEditor -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+
 </head>
 
 <body class="nav-md">
@@ -71,6 +73,9 @@
                             <ul class="nav side-menu">
                                 <li>
                                     <a href="index.php"><i class="fa fa-home"></i> Home </a>
+                                </li>
+                                <li>
+                                    <a href="about.php"><i class="fa fa-info"></i> About </a>
                                 </li>
                                 <li>
                                     <a href="setting.php"><i class="fa fa-cogs"></i> Settings </a>
