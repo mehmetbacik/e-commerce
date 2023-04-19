@@ -1,10 +1,37 @@
 <?php 
+ob_start();
 session_start();
 error_reporting(0);
 require_once 'connect.php';
 /*echo "<pre>";
 print_r($_POST);
 echo "</pre>";*/
+
+/*Admin Login*/
+if (isset($_POST['admin_login'])) {
+    $user_mail=$_POST['user_mail'];
+    $user_password=md5($_POST['user_password']);
+
+    $sql=$db->prepare("SELECT * FROM user WHERE user_mail=:usermail and user_password=:userpassword and user_authority=:userauthority");
+	$sql->execute([
+        'usermail' => $user_mail, 
+        'userpassword' => $user_password,
+        'userauthority' => 9
+    ]);
+
+    echo $operate=$sql->rowCount();
+    
+    if ($operate==1) {
+        $_SESSION['user_mail']=$user_mail;
+        Header("Location:../production/index.php");
+        exit;
+    } else {
+        Header("Location:../production/login.php?status=false");
+        exit;
+    }
+    
+}
+/*Admin Login*/
 
 /*Setting*/
 if (isset($_POST['setting_save'])) {

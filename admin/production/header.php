@@ -1,6 +1,10 @@
 <?php
+    ob_start();
     session_start();
     require_once '../system/connect.php';
+    $usersql=$db->prepare("SELECT * FROM user WHERE user_mail=:usermail");
+    $usersql->execute(['usermail' => $_SESSION['user_mail']]);
+    $userbring=$usersql->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +63,7 @@
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2>John Doe</h2>
+                            <h2><?php echo $userbring['user_name']; ?></h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
