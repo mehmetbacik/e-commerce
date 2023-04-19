@@ -116,7 +116,7 @@
 						</div>
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li><a href="index-1.htm" class="active">Home</a><div class="curve"></div></li>
+								<li><a href="index.php" class="active">Home</a><div class="curve"></div></li>
 								<li class="dropdown menu-large">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mega Menu</a>
 									<ul class="dropdown-menu megamenu container row">
@@ -189,7 +189,7 @@
 										<li><a href="contact.htm">Contact Page</a></li>
 									</ul>
 								</li>
-								<li><a href="page-sidebar.htm">About</a></li>
+								<li><a href="about.php">About</a></li>
 								<li><a href="category.htm">Product</a></li>
 								<li><a href="contact.htm">Contact</a></li>
 							</ul>

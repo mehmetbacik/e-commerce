@@ -1,0 +1,16 @@
+RewriteEngine on
+
+#RewriteCond %{SERVER_PORT} 80 
+#RewriteRule ^(.*)$ http://www.webpage_name.com/$1 [R,L]
+
+#RewriteCond %{HTTP_HOST} ^webpage_name.com. [NC]
+#RewriteRule ^(.*)$ http://www.webpage_name.com/$1 [L,R=301,NC]
+
+
+#Seo url create
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+#404 error page redirect code
+#ErrorDocument 404 http://www.404webpage_name.com
