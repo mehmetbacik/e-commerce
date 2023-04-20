@@ -1,3 +1,3 @@
 <?php 
-Header("Location:production/login.php");
- ?>
+header("Location:production/login.php");
+?>

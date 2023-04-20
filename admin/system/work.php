@@ -23,10 +23,10 @@ if (isset($_POST['admin_login'])) {
     
     if ($operate==1) {
         $_SESSION['user_mail']=$user_mail;
-        Header("Location:../production/index.php");
+        header("Location:../production/index.php");
         exit;
     } else {
-        Header("Location:../production/login.php?status=false");
+        header("Location:../production/login.php?status=false");
         exit;
     }
     
@@ -89,11 +89,11 @@ if (isset($_POST['setting_save'])) {
 
     if($update) {
         $_SESSION['status']="success";
-        Header("Location:../production/setting.php");
+        header("Location:../production/setting.php");
         exit;
     } else {
         $_SESSION['status']="error";
-        Header("Location:../production/setting.php");
+        header("Location:../production/setting.php");
         exit;
     }
 }
@@ -121,11 +121,11 @@ if (isset($_POST['about_save'])) {
 
     if($update) {
         $_SESSION['status']="success";
-        Header("Location:../production/about.php");
+        header("Location:../production/about.php");
         exit;
     } else {
         $_SESSION['status']="error";
-        Header("Location:../production/about.php");
+        header("Location:../production/about.php");
         exit;
     }
 }
