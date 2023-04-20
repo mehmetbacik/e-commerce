@@ -4,7 +4,12 @@
     require_once '../system/connect.php';
     $usersql=$db->prepare("SELECT * FROM user WHERE user_mail=:usermail");
     $usersql->execute(['usermail' => $_SESSION['user_mail']]);
+    $logincontrol=$usersql->rowCount();
     $userbring=$usersql->fetch(PDO::FETCH_ASSOC);
+    if ($logincontrol==0) {
+        Header("Location:login.php?status=forbidden");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
