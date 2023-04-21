@@ -130,4 +130,51 @@ if (isset($_POST['about_save'])) {
     }
 }
 /*About*/
+
+/*User-Edit*/
+if (isset($_POST['useredit_save'])) {
+    $user_id=$_POST['user_id'];
+    $sql=$db->prepare("UPDATE user SET 
+        user_name=:user_name,
+        user_gsm=:user_gsm,
+        user_adress=:user_adress,
+        user_country=:user_country,
+        user_district=:user_district
+        WHERE user_id={$_POST['user_id']}
+    ");
+    $update=$sql->execute(
+        [
+            'user_name' => $_POST['user_name'],
+            'user_gsm' => $_POST['user_gsm'],
+            'user_adress' => $_POST['user_adress'],
+            'user_country' => $_POST['user_country'],
+            'user_district' => $_POST['user_district']
+        ]
+    );
+
+    if($update) {
+        $_SESSION['status']="success";
+        header("Location:../production/user-edit.php?user_id=$user_id&success");
+        exit;
+    } else {
+        $_SESSION['status']="error";
+        header("Location:../production/user-edit.php?user_id=$user_id&error");
+        exit;
+    }
+}
+/*User-Edit*/
+
+/*User-Remove*/
+if ($_GET['userremove']=="approval") {
+	$userremove=$db->prepare("DELETE from user where user_id=:id");
+	$usercontrol=$userremove->execute(array(
+		'id' => $_GET['user_id']
+		));
+	if ($usercontrol) {
+		header("location:../production/user.php?remove=success");
+	} else {
+		header("location:../production/user.php?remove=error");
+	}
+}
+/*User-Remove*/
 ?>

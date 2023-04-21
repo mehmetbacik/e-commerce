@@ -87,6 +87,9 @@
                                     <a href="about.php"><i class="fa fa-info"></i> About </a>
                                 </li>
                                 <li>
+                                    <a href="user.php"><i class="fa fa-users"></i> Users </a>
+                                </li>
+                                <li>
                                     <a href="setting.php"><i class="fa fa-cogs"></i> Settings </a>
                                 </li>
                                 <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
