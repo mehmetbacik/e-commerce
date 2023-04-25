@@ -3,6 +3,7 @@ ob_start();
 session_start();
 error_reporting(0);
 require_once 'connect.php';
+require_once '../production/function.php';
 /*echo "<pre>";
 print_r($_POST);
 echo "</pre>";*/
@@ -177,4 +178,40 @@ if ($_GET['userremove']=="approval") {
 	}
 }
 /*User-Remove*/
+
+/*Menu-Edit*/
+if (isset($_POST['menuedit_save'])) {
+    $menu_id=$_POST['menu_id'];
+    $menu_seourl=seo($_POST['menu_name']);
+    $sql=$db->prepare("UPDATE menu SET 
+        menu_name=:menu_name,
+        menu_detail=:menu_detail,
+        menu_url=:menu_url,
+        menu_order=:menu_order,
+        menu_seourl=:menu_seourl,
+        menu_status=:menu_status
+        WHERE menu_id={$_POST['menu_id']}
+    ");
+    $update=$sql->execute(
+        [
+            'menu_name' => $_POST['menu_name'],
+            'menu_detail' => $_POST['menu_detail'],
+            'menu_url' => $_POST['menu_url'],
+            'menu_order' => $_POST['menu_order'],
+            'menu_seourl' => $menu_seourl,
+            'menu_status' => $_POST['menu_status']
+        ]
+    );
+
+    if($update) {
+        $_SESSION['status']="success";
+        header("Location:../production/menu-edit.php?menu_id=$menu_id&success");
+        exit;
+    } else {
+        $_SESSION['status']="error";
+        header("Location:../production/menu-edit.php?menu_id=$menu_id&error");
+        exit;
+    }
+}
+/*Menu-Edit*/
 ?>
