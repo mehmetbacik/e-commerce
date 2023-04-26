@@ -214,4 +214,50 @@ if (isset($_POST['menuedit_save'])) {
     }
 }
 /*Menu-Edit*/
+
+/*Menu-Remove*/
+if ($_GET['menuremove']=="approval") {
+	$menuremove=$db->prepare("DELETE from menu where menu_id=:id");
+	$menucontrol=$menuremove->execute(array(
+		'id' => $_GET['menu_id']
+		));
+	if ($menucontrol) {
+		header("location:../production/menu.php?remove=success");
+	} else {
+		header("location:../production/menu.php?remove=error");
+	}
+}
+/*Menu-Remove*/
+
+/*Menu-Add*/
+if (isset($_POST['menuadd'])) {
+    $menu_seourl=seo($_POST['menu_name']);
+    $sql=$db->prepare("INSERT INTO menu SET 
+        menu_name=:menu_name,
+        menu_detail=:menu_detail,
+        menu_url=:menu_url,
+        menu_order=:menu_order,
+        menu_seourl=:menu_seourl,
+        menu_status=:menu_status
+    ");
+    $insert=$sql->execute(
+        [
+            'menu_name' => $_POST['menu_name'],
+            'menu_detail' => $_POST['menu_detail'],
+            'menu_url' => $_POST['menu_url'],
+            'menu_order' => $_POST['menu_order'],
+            'menu_seourl' => $menu_seourl,
+            'menu_status' => $_POST['menu_status']
+        ]
+    );
+
+    if($insert) {
+        header("Location:../production/menu.php?status=success");
+        exit;
+    } else {
+        header("Location:../production/menu.php?status=error");
+        exit;
+    }
+}
+/*Menu-Add*/
 ?>
