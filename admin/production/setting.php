@@ -73,7 +73,7 @@ echo "</pre>";*/
                                 <input type="file" id="setting_logo"  name="setting_logo"  class="form-control col-md-7 col-xs-12">
                             </div>
                             </div>
-                            <input type="hidden" name="old-line" value="<?php echo $settingbring['setting_logo']; ?>">
+                            <input type="hidden" name="old_url" value="<?php echo $settingbring['setting_logo']; ?>">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                 <div class="text-right">
                                     <button type="submit" name="logoedit" class="btn btn-primary">Update</button>

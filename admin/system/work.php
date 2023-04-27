@@ -53,10 +53,13 @@ if (isset($_POST['logoedit'])) {
 	if ($update) {
 		$imgremoveunlink=$_POST['old_url'];
 		unlink("../../$imgremoveunlink");
-		header("Location:../production/setting.php?status=success");
+        
+        $_SESSION['status']="success";
+		header("Location:../production/setting.php");
         exit;
 	} else {
-		header("Location:../production/setting.php?status=error");
+        $_SESSION['status']="error";
+		header("Location:../production/setting.php");
         exit;
 	}
 }
