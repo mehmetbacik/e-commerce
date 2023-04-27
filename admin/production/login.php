@@ -40,11 +40,12 @@
             <div class="separator">
               <p class="change_link">
                 <?php 
+                  if (isset($_GET['status'])) {
                   if ($_GET['status']=="false") {
                   echo "Login Error: User not found.";
                   } elseif ($_GET['status']=="exit") {
                   echo "Login successful.";
-                  }
+                  }}
                 ?>
               </p>
               <div class="clearfix"></div>

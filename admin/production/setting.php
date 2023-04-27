@@ -55,6 +55,32 @@ echo "</pre>";*/
                             unset($_SESSION['status']);
                             }}
                         ?>
+                        <form action="../system/work.php" method="POST" enctype="multipart/form-data"  data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="logo">Logo<br></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <?php 
+                                if (strlen($settingbring['setting_logo'])>0) {?>
+                                <img width="200"  src="../../<?php echo $settingbring['setting_logo']; ?>">
+                                <?php } else {?>
+                                <img width="200"  src="../../images/logo-none.png">
+                                <?php } ?>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="file" id="setting_logo"  name="setting_logo"  class="form-control col-md-7 col-xs-12">
+                            </div>
+                            </div>
+                            <input type="hidden" name="old-line" value="<?php echo $settingbring['setting_logo']; ?>">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <div class="text-right">
+                                    <button type="submit" name="logoedit" class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                        <hr>
                         <form action="../system/work.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title</label>

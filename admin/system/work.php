@@ -34,6 +34,34 @@ if (isset($_POST['admin_login'])) {
 }
 /*Admin Login*/
 
+/*Logo Edit*/
+if (isset($_POST['logoedit'])) {
+
+	$uploads_dir = '../../images';
+	@$tmp_name = $_FILES['setting_logo']["tmp_name"];
+	@$name = $_FILES['setting_logo']["name"];
+	$uniquenumber4=rand(20000,32000);
+	$refimgurl=substr($uploads_dir, 6)."/".$uniquenumber4.$name;
+	@move_uploaded_file($tmp_name, "$uploads_dir/$uniquenumber4$name");
+
+	$edit=$db->prepare("UPDATE setting SET
+		setting_logo=:logo
+		WHERE setting_id=1");
+	$update=$edit->execute(array(
+		'logo' => $refimgurl
+		));
+	if ($update) {
+		$imgremoveunlink=$_POST['old_url'];
+		unlink("../../$imgremoveunlink");
+		header("Location:../production/setting.php?status=success");
+        exit;
+	} else {
+		header("Location:../production/setting.php?status=error");
+        exit;
+	}
+}
+/*Logo Edit*/
+
 /*Setting*/
 if (isset($_POST['setting_save'])) {
     $sql=$db->prepare("UPDATE setting SET 
