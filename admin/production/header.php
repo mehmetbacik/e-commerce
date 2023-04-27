@@ -2,6 +2,7 @@
     ob_start();
     session_start();
     require_once '../system/connect.php';
+    require_once 'function.php';
     $usersql=$db->prepare("SELECT * FROM user WHERE user_mail=:usermail");
     $usersql->execute(['usermail' => $_SESSION['user_mail']]);
     $logincontrol=$usersql->rowCount();

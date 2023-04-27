@@ -13,6 +13,7 @@ $menucontrol->execute();
           <div class="x_title">
             <h2>Menu <small>
               <?php 
+              if (isset($_GET['remove'])) {
               if ($_GET['remove']=="success") {?>
                   <div class="alert alert-success">
                     <p>Update successful. User Deleted.</p>
@@ -21,7 +22,7 @@ $menucontrol->execute();
                 <div class="alert alert-danger">
                     <p>Update error</p>
                 </div>
-              <?php }
+              <?php }}
               ?>
             </small></h2>
             <ul class="nav navbar-right panel_toolbox">

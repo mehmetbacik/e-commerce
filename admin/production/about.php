@@ -35,6 +35,7 @@ $aboutbring=$sql->fetch(PDO::FETCH_ASSOC);
                     <div class="x_content">
                         <br />
                         <?php
+                            if (isset($_SESSION['status'])) {
                             if ($_SESSION['status']=="success") {
                         ?>
                             <div class="alert alert-success">
@@ -49,7 +50,7 @@ $aboutbring=$sql->fetch(PDO::FETCH_ASSOC);
                             </div>
                         <?php
                             unset($_SESSION['status']);
-                            }
+                            }}
                         ?>
                         <form action="../system/work.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                             <div class="form-group">

@@ -1,5 +1,6 @@
 <?php
     require_once 'admin/system/connect.php';
+	require_once 'admin/production/function.php';
 	$sql=$db->prepare("SELECT * FROM setting WHERE setting_id=:id");
 	$sql->execute(['id' => 1]);
 	$settingbring=$sql->fetch(PDO::FETCH_ASSOC);
@@ -116,7 +117,7 @@
 						</div>
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li><a href="index.php" class="active">Home</a><div class="curve"></div></li>
+								<li><a href="index" class="active">Home</a><div class="curve"></div></li>
 								<?php
 									$menucontrol=$db->prepare("SELECT * FROM menu where menu_status=:mstatus order by menu_order ASC limit 5");
 									$menucontrol->execute(
@@ -126,7 +127,7 @@
 									);
 									while($menubring=$menucontrol->fetch(PDO::FETCH_ASSOC)) {
 								?>
-									<li><a href="<?php echo $menubring['menu_url']?>"><?php echo $menubring['menu_name']?></a></li>
+									<li><a href="<?php if(!empty($menubring['menu_url'])) { echo $menubring['menu_url']; } else { echo "page-".seo($menubring['menu_name']);} ?>"><?php echo $menubring['menu_name']?></a></li>
 								<?php } ?>
 							</ul>
 						</div>

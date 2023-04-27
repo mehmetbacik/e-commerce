@@ -34,6 +34,7 @@ $menueditbring=$sql->fetch(PDO::FETCH_ASSOC);
                     <div class="x_content">
                         <br />
                         <?php
+                            if (isset($_SESSION['status'])) {
                             if ($_SESSION['status']=="success") {
                         ?>
                             <div class="alert alert-success">
@@ -48,9 +49,15 @@ $menueditbring=$sql->fetch(PDO::FETCH_ASSOC);
                             </div>
                         <?php
                             unset($_SESSION['status']);
-                            }
+                            }}
                         ?>
                         <form action="../system/work.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Menu Link</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="menu_link" value="<?php echo $_SERVER['HTTP_HOST'] ?>/page-<?php echo seo($menueditbring['menu_name']); ?>" disabled class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Name</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
