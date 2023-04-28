@@ -56,8 +56,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella
-                                Alela!</span></a>
+                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Admin Panel </span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -92,6 +91,9 @@
                                 </li>
                                 <li>
                                     <a href="menu.php"><i class="fa fa-list"></i> Menu </a>
+                                </li>
+                                <li>
+                                    <a href="slider.php"><i class="fa fa-sliders"></i> Slider </a>
                                 </li>
                                 <li>
                                     <a href="setting.php"><i class="fa fa-cogs"></i> Settings </a>

@@ -34,6 +34,136 @@ if (isset($_POST['admin_login'])) {
 }
 /*Admin Login*/
 
+/*Slider Add*/
+if (isset($_POST['slideradd'])) {
+    
+	$uploads_dir = '../../images/slider';
+	@$tmp_name = $_FILES['slider_imgurl']["tmp_name"];
+	@$name = $_FILES['slider_imgurl']["name"];
+	//Unique Image Name
+	$uniquenumber1=rand(20000,32000);
+	$uniquenumber2=rand(20000,32000);
+	$uniquenumber3=rand(20000,32000);
+	$uniquenumber4=rand(20000,32000);	
+	$uniquename=$uniquenumber1.$uniquenumber2.$uniquenumber3.$uniquenumber4;
+	$refimgurl=substr($uploads_dir, 6)."/".$uniquename.$name;
+	@move_uploaded_file($tmp_name, "$uploads_dir/$uniquename$name");
+
+	$save=$db->prepare("INSERT INTO slider SET
+		slider_name=:slider_name,
+		slider_order=:slider_order,
+		slider_link=:slider_link,
+		slider_imgurl=:slider_imgurl
+		");
+	$insert=$save->execute(array(
+		'slider_name' => $_POST['slider_name'],
+		'slider_order' => $_POST['slider_order'],
+		'slider_link' => $_POST['slider_link'],
+		'slider_imgurl' => $refimgurl
+		));
+
+	if ($insert) {
+		header("Location:../production/slider.php?status=success");
+        exit;
+	} else {
+	    header("Location:../production/slider.php?status=error");
+        exit;
+	}
+}
+/*Slider Add*/
+
+/*Slider Edit*/
+if (isset($_POST['slideredit'])) {
+	if($_FILES['slider_imgurl']["size"] > 0)  { 
+		$uploads_dir = '../../images/slider';
+		@$tmp_name = $_FILES['slider_imgurl']["tmp_name"];
+		@$name = $_FILES['slider_imgurl']["name"];
+        //Unique Image Name
+        $uniquenumber1=rand(20000,32000);
+        $uniquenumber2=rand(20000,32000);
+        $uniquenumber3=rand(20000,32000);
+        $uniquenumber4=rand(20000,32000);	
+        $uniquename=$uniquenumber1.$uniquenumber2.$uniquenumber3.$uniquenumber4;
+        $refimgurl=substr($uploads_dir, 6)."/".$uniquename.$name;
+        @move_uploaded_file($tmp_name, "$uploads_dir/$uniquename$name");
+
+		$edit=$db->prepare("UPDATE slider SET
+        	slider_name=:slider_name,
+            slider_order=:slider_order,
+            slider_link=:slider_link,
+            slider_status=:slider_status,
+            slider_imgurl=:slider_imgurl
+			WHERE slider_id={$_POST['slider_id']}");
+		$update=$edit->execute(array(
+			'slider_name' => $_POST['slider_name'],
+			'slider_order' => $_POST['slider_order'],
+			'slider_link' => $_POST['slider_link'],
+			'slider_status' => $_POST['slider_status'],
+			'slider_imgurl' => $refimgurl,
+		    ));
+	
+		$slider_id=$_POST['slider_id'];
+		if ($update) {
+			$imgremoveunlink=$_POST['slider_imgurl'];
+			unlink("../../$imgremoveunlink");
+			header("Location:../production/slider-edit.php?slider_id=$slider_id&status=success");
+            exit;
+		} else {
+			header("Location:../production/slider-edit.php?status=error");
+            exit;
+		}
+
+	} else {
+
+		$edit=$db->prepare("UPDATE slider SET
+        	slider_name=:slider_name,
+            slider_order=:slider_order,
+            slider_link=:slider_link,
+            slider_status=:slider_status	
+			WHERE slider_id={$_POST['slider_id']}");
+		$update=$edit->execute(array(
+			'slider_name' => $_POST['slider_name'],
+			'slider_order' => $_POST['slider_order'],
+			'slider_link' => $_POST['slider_link'],
+			'slider_status' => $_POST['slider_status']
+			));
+
+		$slider_id=$_POST['slider_id'];
+
+		if ($update) {
+			header("Location:../production/slider-edit.php?slider_id=$slider_id&status=success");
+            exit;
+		} else {
+			header("Location:../production/slider-edit.php?status=error");
+            exit;
+		}
+	}
+}
+/*Slider Edit*/
+
+/*Slider Remove*/
+if ($_GET['sliderremove']=="approval") {
+	
+	$remove=$db->prepare("DELETE from slider where slider_id=:slider_id");
+	$control=$remove->execute(
+        [
+            'slider_id' => $_GET['slider_id']
+        ]
+    );
+
+	if ($control) {
+		$imgremoveunlink=$_GET['slider_imgurl'];
+		unlink("../../$imgremoveunlink");
+		header("Location:../production/slider.php?remove=success");
+        exit;
+	} else {
+		header("Location:../production/slider.php?remove=error");
+        exit;
+	}
+
+}
+/*Slider Remove*/
+
 /*Logo Edit*/
 if (isset($_POST['logoedit'])) {
 

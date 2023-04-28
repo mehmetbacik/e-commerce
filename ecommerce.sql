@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 25 Nis 2023, 20:27:37
+-- Üretim Zamanı: 28 Nis 2023, 18:21:35
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -56,7 +56,7 @@ CREATE TABLE `menu` (
   `menu_name` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
   `menu_detail` text COLLATE utf8_turkish_ci NOT NULL,
   `menu_url` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
-  `menu_order` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
+  `menu_order` int(2) NOT NULL,
   `menu_status` enum('0','1') COLLATE utf8_turkish_ci NOT NULL,
   `menu_seourl` varchar(250) COLLATE utf8_turkish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
@@ -66,9 +66,10 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`menu_id`, `menu_top`, `menu_name`, `menu_detail`, `menu_url`, `menu_order`, `menu_status`, `menu_seourl`) VALUES
-(1, '0', 'About', '', 'about.php', '0', '1', 'about'),
-(3, '0', 'Contact', '', 'contact.php', '1', '1', 'contact'),
-(4, '0', 'Category', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>', 'category.php', '2', '1', 'category');
+(1, '0', 'About', '', 'about', 0, '1', 'about'),
+(3, '0', 'Contact', '', 'contact', 1, '1', 'contact'),
+(4, '0', 'Category', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>', '', 2, '1', 'category'),
+(7, '', 'Product', '<p>Menu Detail Content Text</p>', 'product', 3, '0', 'product');
 
 -- --------------------------------------------------------
 
@@ -79,6 +80,7 @@ INSERT INTO `menu` (`menu_id`, `menu_top`, `menu_name`, `menu_detail`, `menu_url
 CREATE TABLE `setting` (
   `setting_id` int(11) NOT NULL,
   `setting_logo` varchar(150) COLLATE utf8_turkish_ci DEFAULT NULL,
+  `setting_url` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
   `setting_title` varchar(250) COLLATE utf8_turkish_ci DEFAULT NULL,
   `setting_description` varchar(250) COLLATE utf8_turkish_ci DEFAULT NULL,
   `setting_keywords` varchar(250) CHARACTER SET utf8 COLLATE utf8_turkish_ci DEFAULT NULL,
@@ -108,8 +110,33 @@ CREATE TABLE `setting` (
 -- Tablo döküm verisi `setting`
 --
 
-INSERT INTO `setting` (`setting_id`, `setting_logo`, `setting_title`, `setting_description`, `setting_keywords`, `setting_author`, `setting_tel`, `setting_gsm`, `setting_fax`, `setting_mail`, `setting_district`, `setting_country`, `setting_adress`, `setting_time`, `setting_maps`, `setting_analystic`, `setting_desk`, `setting_facebook`, `setting_twitter`, `setting_google`, `setting_youtube`, `setting_smtphost`, `setting_smtppassword`, `setting_smtpport`, `setting_live`) VALUES
-(1, 'logo.png', 'E-Commerce Page', 'E-commerce shopping page', 'E-Commerce, Shopping', 'MBCK', '02120000000', '05000000000', '02160000000', 'admin@ecommerce.com', 'Kadıköy', 'İstanbul', 'Bağdat Cad., No:2B, Kadıköy, İstanbul, Türkiye', '09:00 - 18:00', 'Maps test code', 'Analystic test code', 'Helpdesk test code', 'facebook_adresi', 'twitter_adresi', 'google_adresi', 'youtube_adresi', 'host', '123456789', 'port', '1');
+INSERT INTO `setting` (`setting_id`, `setting_logo`, `setting_url`, `setting_title`, `setting_description`, `setting_keywords`, `setting_author`, `setting_tel`, `setting_gsm`, `setting_fax`, `setting_mail`, `setting_district`, `setting_country`, `setting_adress`, `setting_time`, `setting_maps`, `setting_analystic`, `setting_desk`, `setting_facebook`, `setting_twitter`, `setting_google`, `setting_youtube`, `setting_smtphost`, `setting_smtppassword`, `setting_smtpport`, `setting_live`) VALUES
+(1, 'images/30283logo.png', 'http://siteadi.com', 'E-Commerce Page', 'E-commerce shopping page', 'E-Commerce, Shopping', 'MBCK', '02120000000', '05000000000', '02160000000', 'admin@ecommerce.com', 'Kadıköy', 'İstanbul', 'Bağdat Cad., No:2B, Kadıköy, İstanbul, Türkiye', '09:00 - 18:00', 'Maps test code', 'Analystic test code', 'Helpdesk test code', 'facebook_adresi', 'twitter_adresi', 'google_adresi', 'youtube_adresi', 'host', '123456789', 'port', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `slider`
+--
+
+CREATE TABLE `slider` (
+  `slider_id` int(11) NOT NULL,
+  `slider_name` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
+  `slider_imgurl` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
+  `slider_order` int(2) NOT NULL,
+  `slider_link` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
+  `slider_status` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `slider`
+--
+
+INSERT INTO `slider` (`slider_id`, `slider_name`, `slider_imgurl`, `slider_order`, `slider_link`, `slider_status`) VALUES
+(5, 'Slider 1', 'images/slider/28466236822818125814slide-1.jpg', 1, 'test', '1'),
+(6, 'Slider 2', 'images/slider/24799289202516622533slide-2.jpg', 2, '', '1'),
+(7, 'Slider 3', 'images/slider/30063252702659021852slide-3.jpg', 3, '', '1'),
+(10, 'Slider 4', 'images/slider/29862204183105924319slide-4.jpg', 4, 'test', '1');
 
 -- --------------------------------------------------------
 
@@ -166,6 +193,12 @@ ALTER TABLE `setting`
   ADD PRIMARY KEY (`setting_id`);
 
 --
+-- Tablo için indeksler `slider`
+--
+ALTER TABLE `slider`
+  ADD PRIMARY KEY (`slider_id`);
+
+--
 -- Tablo için indeksler `user`
 --
 ALTER TABLE `user`
@@ -179,13 +212,19 @@ ALTER TABLE `user`
 -- Tablo için AUTO_INCREMENT değeri `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `setting`
 --
 ALTER TABLE `setting`
   MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `slider`
+--
+ALTER TABLE `slider`
+  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `user`
