@@ -54,22 +54,20 @@
 
 				<div class="form-group dob">
 					<div class="col-sm-12">
-						
 						<input type="text" class="form-control"  required="" name="user_name" placeholder="Name">
 					</div>
-					
 				</div>
 				<div class="form-group">
 					<div class="col-sm-12">
-						<input type="email" class="form-control" required="" name="user_mail"  placeholder="E-Mail">
+						<input type="email" class="form-control" required="" name="user_mail" placeholder="E-Mail">
 					</div>
 				</div>
 				<div class="form-group dob">
 					<div class="col-sm-6">
-						<input type="password" class="form-control" name="user_passwordone"    placeholder="Password">
+						<input type="password" class="form-control" name="user_passwordone" placeholder="Password">
 					</div>
 					<div class="col-sm-6">
-						<input type="password" class="form-control" name="user_passwordtwo"   placeholder="Password again">
+						<input type="password" class="form-control" name="user_passwordtwo" placeholder="Password again">
 					</div>
 				</div>
 

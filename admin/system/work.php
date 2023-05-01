@@ -8,6 +8,65 @@ require_once '../production/function.php';
 print_r($_POST);
 echo "</pre>";*/
 
+/*User-Save*/
+if (isset($_POST['usersave'])) { 
+    $user_name=htmlspecialchars($_POST['user_name']);
+    $user_mail=htmlspecialchars($_POST['user_mail']);
+    $user_passwordone=htmlspecialchars($_POST['user_passwordone']);
+    $user_passwordtwo=htmlspecialchars($_POST['user_passwordtwo']);
+
+    if ($user_passwordone==$user_passwordtwo) {
+        if ($user_passwordone>=6) {
+			$usercontrol=$db->prepare("SELECT * FROM user WHERE user_mail=:mail");
+			$usercontrol->execute(
+                [
+                    'mail' => $user_mail
+                ]
+			);
+
+			$say=$usercontrol->rowCount();
+
+			if ($say==0) {
+				$password=md5($user_passwordone);
+				$user_authority=1;
+
+				$usersave=$db->prepare("INSERT INTO user SET
+					user_name=:user_name,
+					user_mail=:user_mail,
+					user_password=:user_password,
+					user_authority=:user_authority
+				");
+				$insert=$usersave->execute(
+                    [
+                        'user_name' => $user_name,
+                        'user_mail' => $user_mail,
+                        'user_password' => $password,
+                        'user_authority' => $user_authority
+                    ]
+                );
+
+				if ($insert) {
+					header("location:../../index.php?status=loginsuccess");
+                    exit;
+				} else {
+					header("location:../../register.php?status=unsuccessful");
+                    exit;
+				}
+			} else {
+				header("location:../../register.php?status=duplication");
+                exit;
+            }
+        } else {
+            header("location:../../register.php?status=missingpassword");
+            exit;
+        }
+    } else {
+        header("location:../../register.php?status=differentpassword");
+        exit;
+    }
+}
+/*User-Save*/
+
 /*Admin Login*/
 if (isset($_POST['admin_login'])) {
     $user_mail=$_POST['user_mail'];
