@@ -1,9 +1,18 @@
 <?php
+	ob_start();
+	session_start();
+	
     require_once 'admin/system/connect.php';
 	require_once 'admin/production/function.php';
+
 	$sql=$db->prepare("SELECT * FROM setting WHERE setting_id=:id");
 	$sql->execute(['id' => 1]);
 	$settingbring=$sql->fetch(PDO::FETCH_ASSOC);
+
+	$usersql=$db->prepare("SELECT * FROM user WHERE user_mail=:usermail");
+    $usersql->execute(['usermail' => $_SESSION['usercustomer_mail']]);
+    $logincontrol=$usersql->rowCount();
+    $userbring=$usersql->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -49,22 +58,30 @@
 				<div class="col-md-8">
 					<div class="pushright">
 						<div class="top">
-							<a href="#" id="reg" class="btn btn-default btn-dark">Login<span>-- Or --</span>Register</a>
+							<?php
+								if(!isset($_SESSION['usercustomer_mail'])) {
+							?>
+								<a href="#" id="reg" class="btn btn-default btn-dark">Login<span>-- Or --</span>Register</a>
+
+							<?php } else { ?>
+								<a href="#" class="btn btn-default btn-dark">Welcome<span><?php echo $userbring['user_name']; ?> </span></a>
+							<?php } ?>
+
 							<div class="regwrap">
 								<div class="row">
 									<div class="col-md-6 regform">
 										<div class="title-widget-bg">
 											<div class="title-widget">Login</div>
 										</div>
-										<form role="form">
+										<form action="admin/system/work.php" method="POST" role="form">
 											<div class="form-group">
-												<input type="text" class="form-control" id="username" placeholder="Username">
+												<input type="text" class="form-control" name="user_mail" id="username" placeholder="E-Mail">
 											</div>
 											<div class="form-group">
-												<input type="password" class="form-control" id="password" placeholder="password">
+												<input type="password" class="form-control" name="user_password" id="password" placeholder="Password">
 											</div>
 											<div class="form-group">
-												<button class="btn btn-default btn-red btn-sm">Sign In</button>
+												<button type="submit" name="userlogin" class="btn btn-default btn-red btn-sm">Sign In</button>
 											</div>
 										</form>
 									</div>
@@ -181,13 +198,20 @@
 							<div class="clearfix"></div>
 						</div>
 					</div>
-					<div class="container" style="display:none;">
-						<ul class="small-menu"><!--small-nav -->
-							<li><a href="" class="myacc">My Account</a></li>
-							<li><a href="" class="myshop">Shopping Chart</a></li>
-							<li><a href="" class="mycheck">Checkout</a></li>
-						</ul><!--small-nav -->
-					</div>
+					<?php
+						if(isset($_SESSION['usercustomer_mail'])) { 
+					?>
+						<div class="container">
+							<ul class="small-menu"><!--small-nav -->
+								<li><a href="account" class="myacc">My Account</a></li>
+								<li><a href="orders" class="myshop">My Orders</a></li>
+								<li><a href="logout" class="mycheck">Logout</a></li>
+							</ul><!--small-nav -->
+						</div>
+					<?php
+						}
+					?>
+
 				</div>
 			</div>
 		</div>

@@ -93,6 +93,34 @@ if (isset($_POST['admin_login'])) {
 }
 /*Admin Login*/
 
+/*User Login*/
+if (isset($_POST['userlogin'])) {
+
+	echo $user_mail=htmlspecialchars($_POST['user_mail']); 
+	echo $user_password=md5($_POST['user_password']); 
+
+	$usercontrol=$db->prepare("SELECT * FROM user WHERE user_mail=:mail and user_authority=:authority and user_password=:password and user_status=:status");
+	$usercontrol->execute(
+        [
+            'mail' => $user_mail,
+            'authority' => 1,
+            'password' => $user_password,
+            'status' => 1
+        ]
+		);
+
+	$say=$usercontrol->rowCount();
+
+	if ($say==1) {
+		echo $_SESSION['usercustomer_mail']=$user_mail;
+		header("Location:../../");
+		exit;
+	} else {
+		header("Location:../../?status=errorlogin");
+	}
+}
+/*User Login*/
+
 /*Slider Add*/
 if (isset($_POST['slideradd'])) {
     
