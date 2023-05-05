@@ -67,6 +67,39 @@ if (isset($_POST['usersave'])) {
 }
 /*User-Save*/
 
+/*User-Customer-Update*/
+if (isset($_POST['usercustomer_update'])) {
+    $user_id=$_POST['user_id'];
+    $sql=$db->prepare("UPDATE user SET 
+        user_name=:user_name,
+        user_gsm=:user_gsm,
+        user_adress=:user_adress,
+        user_country=:user_country,
+        user_district=:user_district
+        WHERE user_id={$_POST['user_id']}
+    ");
+    $update=$sql->execute(
+        [
+            'user_name' => $_POST['user_name'],
+            'user_gsm' => $_POST['user_gsm'],
+            'user_adress' => $_POST['user_adress'],
+            'user_country' => $_POST['user_country'],
+            'user_district' => $_POST['user_district']
+        ]
+    );
+
+    if($update) {
+        $_SESSION['status']="success";
+        header("Location:../../account.php?user_id=$user_id&success");
+        exit;
+    } else {
+        $_SESSION['status']="error";
+        header("Location:../../account.php?user_id=$user_id&error");
+        exit;
+    }
+}
+/*User-Customer-Update*/
+
 /*Admin Login*/
 if (isset($_POST['admin_login'])) {
     $user_mail=$_POST['user_mail'];

@@ -22,62 +22,55 @@
 				<div class="title-bg">
 					<div class="title">Registration Information</div>
 				</div>
-
-				<?php 
-                if (isset($_GET['status'])) {
-				if ($_GET['status']=="differentpassword") {?>
-
-				<div class="alert alert-danger">
-					<strong>Error!</strong> Passwords do not match.
-				</div>
-					
-				<?php } elseif ($_GET['status']=="missingpassword") {?>
-
-				<div class="alert alert-danger">
-					<strong>Error!</strong> Password must be at least 6 characters long.
-				</div>
-					
-				<?php } elseif ($_GET['status']=="duplication") {?>
-
-				<div class="alert alert-danger">
-					<strong>Error!</strong> This user has already been registered.
-				</div>
-					
-				<?php } elseif ($_GET['status']=="unsuccessful") {?>
-
-				<div class="alert alert-danger">
-					<strong>Error!</strong> Failed to Register Consult the System Administrator.
-				</div>
-					
-				<?php }}
-				 ?>
-
+                        <?php
+                            if (isset($_SESSION['status'])) {
+                            if ($_SESSION['status']=="success") {
+                        ?>
+                            <div class="alert alert-success">
+                                <p>Update successful</p>
+                            </div>
+                        <?php
+                            unset($_SESSION['status']);
+                            } else if ($_SESSION['status']=="error") {
+                        ?>
+                            <div class="alert alert-danger">
+                                <p>Update error</p>
+                            </div>
+                        <?php
+                            unset($_SESSION['status']);
+                            }}
+                        ?>
 				<div class="form-group dob">
 					<div class="col-sm-12">
-						<input type="text" class="form-control"  required="" name="user_name" placeholder="Name">
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-12">
-						<input type="email" class="form-control" required="" name="user_mail" placeholder="E-Mail">
+						<input type="text" class="form-control" name="user_name" value="<?php echo $userbring['user_name']; ?>">
 					</div>
 				</div>
 				<div class="form-group dob">
-					<div class="col-sm-6">
-						<input type="password" class="form-control" name="user_passwordone" placeholder="Password">
-					</div>
-					<div class="col-sm-6">
-						<input type="password" class="form-control" name="user_passwordtwo" placeholder="Password again">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" name="user_gsm" value="<?php echo $userbring['user_gsm']; ?>">
 					</div>
 				</div>
-
-
-
-				<button type="submit" name="usersave" class="btn btn-default btn-red">Save</button>
+				<div class="form-group dob">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" name="user_adress" value="<?php echo $userbring['user_adress']; ?>">
+					</div>
+				</div>
+				<div class="form-group dob">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" name="user_country" value="<?php echo $userbring['user_country']; ?>">
+					</div>
+				</div>
+				<div class="form-group dob">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" name="user_district" value="<?php echo $userbring['user_district']; ?>">
+					</div>
+				</div>
+				<input type="hidden" name="user_id" value="<?php echo $userbring['user_id']; ?>">
+				<button type="submit" name="usercustomer_update" class="btn btn-default btn-red">Update</button>
 			</div>
 			<div class="col-md-6">
 				<div class="title-bg">
-					<div class="title">Forgot Your Password?</div>
+					<div class="title">Profil Photos</div>
 				</div>
 				<center><img width="400" src="https://via.placeholder.com/500x300"></center>
 			</div>
