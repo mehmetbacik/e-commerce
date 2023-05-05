@@ -16,7 +16,7 @@ if (isset($_POST['usersave'])) {
     $user_passwordtwo=htmlspecialchars($_POST['user_passwordtwo']);
 
     if ($user_passwordone==$user_passwordtwo) {
-        if ($user_passwordone>=6) {
+        if (strlen($user_passwordone)>=6) {
 			$usercontrol=$db->prepare("SELECT * FROM user WHERE user_mail=:mail");
 			$usercontrol->execute(
                 [

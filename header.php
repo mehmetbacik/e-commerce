@@ -1,7 +1,7 @@
 <?php
 	ob_start();
 	session_start();
-	
+	error_reporting(E_ALL & ~E_NOTICE);
     require_once 'admin/system/connect.php';
 	require_once 'admin/production/function.php';
 
@@ -9,8 +9,8 @@
 	$sql->execute(['id' => 1]);
 	$settingbring=$sql->fetch(PDO::FETCH_ASSOC);
 
-	$usersql=$db->prepare("SELECT * FROM user WHERE user_mail=:usermail");
-    $usersql->execute(['usermail' => $_SESSION['usercustomer_mail']]);
+	$usersql=$db->prepare("SELECT * FROM user WHERE user_mail=:mail");
+    $usersql->execute(['mail' => $_SESSION['usercustomer_mail']]);
     $logincontrol=$usersql->rowCount();
     $userbring=$usersql->fetch(PDO::FETCH_ASSOC);
 ?>

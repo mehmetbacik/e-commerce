@@ -7,7 +7,7 @@
 				<div class="page-title-inner">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="bigtitle">Register</div>
+							<div class="bigtitle">My Account</div>
 							<p>Lorem ipsum dolor sit amet.</p>
 						</div>
 					</div>
@@ -73,7 +73,7 @@
 
 
 
-				<button type="submit" name="usersave" class="btn btn-default btn-red">Register</button>
+				<button type="submit" name="usersave" class="btn btn-default btn-red">Save</button>
 			</div>
 			<div class="col-md-6">
 				<div class="title-bg">
