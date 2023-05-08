@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 28 Nis 2023, 18:21:35
+-- Üretim Zamanı: 08 May 2023, 18:49:26
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -43,6 +43,35 @@ CREATE TABLE `about` (
 
 INSERT INTO `about` (`about_id`, `about_title`, `about_content`, `about_video`, `about_vision`, `about_mission`) VALUES
 (1, 'About Title', '<p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </strong>Proin sed ex vel elit luctus euismod. Donec commodo a massa quis ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum placerat massa, eu ornare nibh sagittis sit amet. Nullam convallis cursus scelerisque. Ut iaculis sollicitudin dolor, vel lobortis leo tempus in. Donec rutrum justo id viverra convallis. Fusce gravida ullamcorper posuere.</p>', 'jNQXAC9IVRw', 'Nullam ut varius sapien. In quis urna ut felis hendrerit vehicula tincidunt eu mi. Donec varius varius sem at bibendum. Mauris placerat libero ut accumsan tempor. Praesent eu sodales urna. Morbi sed metus convallis, egestas nisl vel, tristique ante.', 'Nullam ut varius sapien. In quis urna ut felis hendrerit vehicula tincidunt eu mi. Donec varius varius sem at bibendum. Mauris placerat libero ut accumsan tempor. Praesent eu sodales urna. Morbi sed metus convallis, egestas nisl vel, tristique ante.');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `categories`
+--
+
+CREATE TABLE `categories` (
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
+  `category_top` int(2) NOT NULL,
+  `category_seourl` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
+  `category_order` int(2) NOT NULL,
+  `category_status` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `categories`
+--
+
+INSERT INTO `categories` (`category_id`, `category_name`, `category_top`, `category_seourl`, `category_order`, `category_status`) VALUES
+(1, 'Shoes', 0, '', 0, '1'),
+(2, 'Shirt', 0, '', 1, '1'),
+(3, 'Jumper', 0, '', 2, '1'),
+(4, 'Coats', 0, '', 3, '1'),
+(5, 'Jeans', 0, '', 4, '1'),
+(6, 'Jacket', 0, '', 5, '1'),
+(7, 'Bag', 0, '', 6, '1'),
+(8, 'Hat', 0, '', 7, '1');
 
 -- --------------------------------------------------------
 
@@ -168,7 +197,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `user_time`, `user_image`, `user_tc`, `user_name`, `user_mail`, `user_gsm`, `user_password`, `user_adress`, `user_country`, `user_district`, `user_title`, `user_authority`, `user_status`) VALUES
 (1, '2023-04-19 19:17:15', NULL, NULL, 'Name', 'name.surname@ecommerce.com', '0500 000 00 00', '25d55ad283aa400af464c76d713c07ad', 'Türkiye', 'İstanbul', 'Üsküdar', NULL, '9', 1),
 (2, '2023-04-19 19:17:15', NULL, NULL, 'Nameee', '1@ecommerce.com', '0500 000 00 00', '25d55ad283aa400af464c76d713c07ad', 'Türkiye', 'İstanbul', 'Üsküdar', NULL, '9', 1),
-(3, '2023-04-19 19:17:15', NULL, NULL, 'Name123', '2@ecommerce.com', '0500 000 00 00', '25d55ad283aa400af464c76d713c07ad', 'Türkiye', 'İstanbul', 'Üsküdar', NULL, '9', 1);
+(3, '2023-04-19 19:17:15', NULL, NULL, 'Name123', '2@ecommerce.com', '0500 000 00 00', '25d55ad283aa400af464c76d713c07ad', 'Türkiye', 'İstanbul', 'Üsküdar', NULL, '9', 1),
+(8, '2023-05-02 19:47:37', NULL, NULL, 'test test', 'test@test.com', '0500 000 00 00', '25d55ad283aa400af464c76d713c07ad', 'Türkiye', 'İstanbul', 'Fatih', NULL, '1', 1),
+(9, '2023-05-05 15:10:52', NULL, NULL, 'test1', 'test1@test.com', NULL, 'e99a18c428cb38d5f260853678922e03', NULL, NULL, NULL, NULL, '1', 1);
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -179,6 +210,12 @@ INSERT INTO `user` (`user_id`, `user_time`, `user_image`, `user_tc`, `user_name`
 --
 ALTER TABLE `about`
   ADD PRIMARY KEY (`about_id`);
+
+--
+-- Tablo için indeksler `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`category_id`);
 
 --
 -- Tablo için indeksler `menu`
@@ -209,6 +246,12 @@ ALTER TABLE `user`
 --
 
 --
+-- Tablo için AUTO_INCREMENT değeri `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `menu`
 --
 ALTER TABLE `menu`
@@ -230,7 +273,7 @@ ALTER TABLE `slider`
 -- Tablo için AUTO_INCREMENT değeri `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

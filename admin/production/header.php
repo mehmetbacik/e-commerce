@@ -87,6 +87,9 @@
                                     <a href="about.php"><i class="fa fa-info"></i> About </a>
                                 </li>
                                 <li>
+                                    <a href="categories.php"><i class="fa fa-folder-open"></i> Categories </a>
+                                </li>
+                                <li>
                                     <a href="user.php"><i class="fa fa-users"></i> Users </a>
                                 </li>
                                 <li>
