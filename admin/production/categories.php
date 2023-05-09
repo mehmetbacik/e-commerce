@@ -1,6 +1,6 @@
 <?php 
 require_once 'header.php'; 
-$categorycontrol=$db->prepare("SELECT * FROM categories");
+$categorycontrol=$db->prepare("SELECT * FROM categories order by category_order ASC");
 $categorycontrol->execute();
 ?>
 <!-- page content -->

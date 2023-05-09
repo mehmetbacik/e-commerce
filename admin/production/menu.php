@@ -1,6 +1,6 @@
 <?php 
 require_once 'header.php'; 
-$menucontrol=$db->prepare("SELECT * FROM menu");
+$menucontrol=$db->prepare("SELECT * FROM menu order by menu_order ASC");
 $menucontrol->execute();
 ?>
 <!-- page content -->

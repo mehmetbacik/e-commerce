@@ -541,4 +541,78 @@ if (isset($_POST['menuadd'])) {
     }
 }
 /*Menu-Add*/
+
+/*Category-Edit*/
+if (isset($_POST['categoryedit_save'])) {
+    $category_id=$_POST['category_id'];
+    $category_seourl=seo($_POST['category_name']);
+    $sql=$db->prepare("UPDATE categories SET 
+        category_name=:name,
+        category_status=:status,
+        category_seourl=:seourl,
+        category_order=:order
+        WHERE category_id={$_POST['category_id']}
+    ");
+    $update=$sql->execute(
+        [
+            'name' => $_POST['category_name'],
+            'status' => $_POST['category_status'],
+            'seourl' => $category_seourl,
+            'order' => $_POST['category_order']
+        ]
+    );
+
+    if($update) {
+        $_SESSION['status']="success";
+        header("Location:../production/category-edit.php?category_id=$category_id&success");
+        exit;
+    } else {
+        $_SESSION['status']="error";
+        header("Location:../production/category-edit.php?category_id=$category_id&error");
+        exit;
+    }
+}
+/*Category-Edit*/
+
+/*Category-Remove*/
+if ($_GET['categoryremove']=="approval") {
+	$categoryremove=$db->prepare("DELETE from categories where category_id=:id");
+	$categorycontrol=$categoryremove->execute(array(
+		'id' => $_GET['category_id']
+		));
+	if ($categorycontrol) {
+		header("location:../production/categories.php?remove=success");
+	} else {
+		header("location:../production/categories.php?remove=error");
+	}
+}
+/*Category-Remove*/
+
+/*Category-Add*/
+if (isset($_POST['categoryadd'])) {
+    $category_seourl=seo($_POST['category_name']);
+    $sql=$db->prepare("INSERT INTO categories SET 
+        category_name=:category_name,
+        category_order=:category_order,
+        category_seourl=:category_seourl,
+        category_status=:category_status
+    ");
+    $insert=$sql->execute(
+        [
+            'category_name' => $_POST['category_name'],
+            'category_order' => $_POST['category_order'],
+            'category_seourl' => $category_seourl,
+            'category_status' => $_POST['category_status']
+        ]
+    );
+
+    if($insert) {
+        header("Location:../production/categories.php?status=success");
+        exit;
+    } else {
+        header("Location:../production/categories.php?status=error");
+        exit;
+    }
+}
+/*Category-Add*/
 ?>
