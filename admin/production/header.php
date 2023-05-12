@@ -90,6 +90,9 @@
                                     <a href="categories.php"><i class="fa fa-folder-open"></i> Categories </a>
                                 </li>
                                 <li>
+                                    <a href="product.php"><i class="fa fa-tag"></i> Products </a>
+                                </li>
+                                <li>
                                     <a href="user.php"><i class="fa fa-users"></i> Users </a>
                                 </li>
                                 <li>
