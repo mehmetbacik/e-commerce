@@ -615,4 +615,18 @@ if (isset($_POST['categoryadd'])) {
     }
 }
 /*Category-Add*/
+
+/*Product-Remove*/
+if ($_GET['productremove']=="approval") {
+	$productremove=$db->prepare("DELETE from product where product_id=:id");
+	$productcontrol=$productremove->execute(array(
+		'id' => $_GET['product_id']
+		));
+	if ($productcontrol) {
+		header("location:../production/product.php?remove=success");
+	} else {
+		header("location:../production/product.php?remove=error");
+	}
+}
+/*Product-Remove*/
 ?>
