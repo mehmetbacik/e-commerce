@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 08 May 2023, 18:49:26
+-- Üretim Zamanı: 12 May 2023, 18:58:48
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -64,14 +64,14 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`category_id`, `category_name`, `category_top`, `category_seourl`, `category_order`, `category_status`) VALUES
-(1, 'Shoes', 0, '', 0, '1'),
-(2, 'Shirt', 0, '', 1, '1'),
-(3, 'Jumper', 0, '', 2, '1'),
-(4, 'Coats', 0, '', 3, '1'),
-(5, 'Jeans', 0, '', 4, '1'),
-(6, 'Jacket', 0, '', 5, '1'),
-(7, 'Bag', 0, '', 6, '1'),
-(8, 'Hat', 0, '', 7, '1');
+(1, 'Shoes', 0, 'shoes', 0, '1'),
+(2, 'Shirt', 0, 'shirt', 1, '1'),
+(3, 'Jumper', 0, 'jumper', 2, '1'),
+(4, 'Coats', 0, 'coats', 3, '1'),
+(5, 'Jeans', 0, 'jeans', 4, '1'),
+(6, 'Jacket', 0, 'jacket', 5, '1'),
+(7, 'Bag', 0, 'bag', 6, '1'),
+(9, 'Hat', 0, 'hat', 7, '1');
 
 -- --------------------------------------------------------
 
@@ -99,6 +99,26 @@ INSERT INTO `menu` (`menu_id`, `menu_top`, `menu_name`, `menu_detail`, `menu_url
 (3, '0', 'Contact', '', 'contact', 1, '1', 'contact'),
 (4, '0', 'Category', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>', '', 2, '1', 'category'),
 (7, '', 'Product', '<p>Menu Detail Content Text</p>', 'product', 3, '0', 'product');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `product`
+--
+
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `product_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `product_name` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
+  `product_seourl` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
+  `product_detail` text COLLATE utf8_turkish_ci NOT NULL,
+  `product_price` float(9,2) NOT NULL,
+  `product_video` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
+  `product_keyword` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
+  `product_stock` int(11) NOT NULL,
+  `product_status` enum('0','1') COLLATE utf8_turkish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- --------------------------------------------------------
 
@@ -224,6 +244,12 @@ ALTER TABLE `menu`
   ADD PRIMARY KEY (`menu_id`);
 
 --
+-- Tablo için indeksler `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_id`);
+
+--
 -- Tablo için indeksler `setting`
 --
 ALTER TABLE `setting`
@@ -249,13 +275,19 @@ ALTER TABLE `user`
 -- Tablo için AUTO_INCREMENT değeri `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `menu`
 --
 ALTER TABLE `menu`
   MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `product`
+--
+ALTER TABLE `product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `setting`
