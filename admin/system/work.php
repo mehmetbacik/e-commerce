@@ -629,4 +629,46 @@ if ($_GET['productremove']=="approval") {
 	}
 }
 /*Product-Remove*/
+
+/*Product-Edit*/
+if (isset($_POST['productedit_save'])) {
+    $product_id=$_POST['product_id'];
+    $product_seourl=seo($_POST['product_name']);
+    $sql=$db->prepare("UPDATE product SET 
+        category_id=:category,
+        product_name=:name,
+        product_status=:status,
+        product_price=:price,
+        product_stock=:stock,
+        product_detail=:detail,
+        product_video=:video,
+        product_keyword=:keyword,
+        product_order=:order
+        WHERE product_id={$_POST['product_id']}
+    ");
+    $update=$sql->execute(
+        [
+            'category' => $_POST['category_id'],
+            'name' => $_POST['product_name'],
+            'status' => $_POST['product_status'],
+            'price' => $_POST['product_price'],
+            'stock' => $_POST['product_stock'],
+            'detail' => $_POST['product_detail'],
+            'video' => $_POST['product_video'],
+            'keyword' => $_POST['product_keyword'],
+            'order' => $_POST['product_order']
+        ]
+    );
+
+    if($update) {
+        $_SESSION['status']="success";
+        header("Location:../production/product-edit.php?product_id=$product_id&success");
+        exit;
+    } else {
+        $_SESSION['status']="error";
+        header("Location:../production/product-edit.php?product_id=$product_id&error");
+        exit;
+    }
+}
+/*Product-Edit*/
 ?>
