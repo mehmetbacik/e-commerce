@@ -671,4 +671,42 @@ if (isset($_POST['productedit_save'])) {
     }
 }
 /*Product-Edit*/
+
+/*Product-Add*/
+if (isset($_POST['productadd'])) {
+    $product_seourl=seo($_POST['product_name']);
+    $sql=$db->prepare("INSERT INTO product SET 
+        category_id=:category,
+        product_name=:name,
+        product_status=:status,
+        product_price=:price,
+        product_stock=:stock,
+        product_detail=:detail,
+        product_video=:video,
+        product_keyword=:keyword,
+        product_order=:order
+    ");
+    $insert=$sql->execute(
+        [
+            'category' => $_POST['category_id'],
+            'name' => $_POST['product_name'],
+            'status' => $_POST['product_status'],
+            'price' => $_POST['product_price'],
+            'stock' => $_POST['product_stock'],
+            'detail' => $_POST['product_detail'],
+            'video' => $_POST['product_video'],
+            'keyword' => $_POST['product_keyword'],
+            'order' => $_POST['product_order']
+        ]
+    );
+
+    if($insert) {
+        header("Location:../production/product.php?status=success");
+        exit;
+    } else {
+        header("Location:../production/product.php?status=error");
+        exit;
+    }
+}
+/*Product-Add*/
 ?>
