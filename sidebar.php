@@ -9,7 +9,7 @@
 							$categorycontrol->execute();
 							while($categorybring=$categorycontrol->fetch(PDO::FETCH_ASSOC)) {
 						?>
-						<li><a href="<?php echo $categorybring['category_seourl'] ?>"><?php echo $categorybring['category_name'] ?></a></li>
+						<li><a href="category-<?=seo($categorybring["category_name"])?>"><?php echo $categorybring['category_name'] ?></a></li>
 						<?php } ?>
 					</ul>
 				</div>
