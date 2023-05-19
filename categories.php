@@ -46,7 +46,7 @@
 						<div class="productwrap">
 							<div class="pr-img">
 								<div class="hot"></div>
-								<a href="#"><img src="http://via.placeholder.com/250x250" alt="" class="img-responsive"></a>
+								<a href="product-<?=seo($productbring["product_name"]).'-'.$productbring["product_id"]?>"><img src="http://via.placeholder.com/250x250" alt="" class="img-responsive"></a>
 								<div class="pricetag on-sale"><div class="inner on-sale"><span class="onsale"><span class="oldprice">$<?php echo $productbring['product_price']*2 ?></span>$<?php echo $productbring['product_price'] ?></span></div></div>
 							</div>
 							<span class="smalltitle"><a href="#"><?php echo $productbring['product_name'] ?></a></span>

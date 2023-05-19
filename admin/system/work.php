@@ -643,7 +643,8 @@ if (isset($_POST['productedit_save'])) {
         product_detail=:detail,
         product_video=:video,
         product_keyword=:keyword,
-        product_order=:order
+        product_order=:order,
+        product_seourl=:seourl
         WHERE product_id={$_POST['product_id']}
     ");
     $update=$sql->execute(
@@ -656,7 +657,8 @@ if (isset($_POST['productedit_save'])) {
             'detail' => $_POST['product_detail'],
             'video' => $_POST['product_video'],
             'keyword' => $_POST['product_keyword'],
-            'order' => $_POST['product_order']
+            'order' => $_POST['product_order'],
+            'seourl' => $product_seourl
         ]
     );
 
@@ -684,7 +686,8 @@ if (isset($_POST['productadd'])) {
         product_detail=:detail,
         product_video=:video,
         product_keyword=:keyword,
-        product_order=:order
+        product_order=:order,
+        product_seourl=:seourl
     ");
     $insert=$sql->execute(
         [
@@ -696,7 +699,8 @@ if (isset($_POST['productadd'])) {
             'detail' => $_POST['product_detail'],
             'video' => $_POST['product_video'],
             'keyword' => $_POST['product_keyword'],
-            'order' => $_POST['product_order']
+            'order' => $_POST['product_order'],
+            'seourl' => $product_seourl
         ]
     );
 

@@ -17,3 +17,4 @@ RewriteRule ^(.*)$ $1.php
 
 RewriteRule ^page-([0-9a-zA-Z-_]+)  menu-detail.php?sef=$1 [L,QSA]
 RewriteRule ^category-([0-9a-zA-Z-_]+)  categories.php?sef=$1 [L,QSA]
+RewriteRule ^product-([0-9a-zA-Z-_]+)-([0-9]+)$  product-detail.php?sef=$1&product_id=$2 [L,QSA]
