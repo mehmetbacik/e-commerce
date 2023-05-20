@@ -34,6 +34,9 @@
 	
 	<!-- Main Style -->
 	<link rel="stylesheet" href="style.css">
+
+	<!-- fancy Style -->
+	<link rel="stylesheet" type="text/css" href="js\product\jquery.fancybox.css?v=2.1.5" media="screen">
 	
 	<!-- owl Style -->
 	<link rel="stylesheet" href="css\owl.carousel.css">
