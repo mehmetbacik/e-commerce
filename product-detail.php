@@ -141,38 +141,28 @@
 					<div class="title">Related Product</div>
 				</div>
 				<div class="row prdct"><!--Products-->
+					<?php 
+						$category_id=$productbring['category_id'];
+						$productrelated_control=$db->prepare("SELECT * FROM product WHERE category_id=:category_id order by rand() ASC limit 3");
+						$productrelated_control->execute(
+							[
+								'category_id' => $category_id
+							]
+						);			
+						while($productrelated_bring=$productrelated_control->fetch(PDO::FETCH_ASSOC)) { 			
+					?>
 					<div class="col-md-4">
 						<div class="productwrap">
 							<div class="pr-img">
 								<div class="hot"></div>
-								<a href="product.htm"><img src="images\sample-4.jpg" alt="" class="img-responsive"></a>
-								<div class="pricetag on-sale"><div class="inner on-sale"><span class="onsale"><span class="oldprice">$314</span>$199</span></div></div>
+								<a href="product-<?=seo($productrelated_bring["product_name"]).'-'.$productrelated_bring["product_id"]?>"><img src="http://via.placeholder.com/250x250" alt="" class="img-responsive"></a>
+								<div class="pricetag on-sale"><div class="inner on-sale"><span class="onsale"><span class="oldprice">$<?php echo $productrelated_bring['product_price']*2 ?></span>$<?php echo $productrelated_bring['product_price'] ?></span></div></div>
 							</div>
-							<span class="smalltitle"><a href="product.htm">Lens</a></span>
-							<span class="smalldesc">Item no.: 1000</span>
+							<span class="smalltitle"><a href="#"><?php echo $productrelated_bring['product_name'] ?></a></span>
+							<span class="smalldesc">Item no.: <?php echo $productrelated_bring['product_id'] ?></span>
 						</div>
 					</div>
-					<div class="col-md-4">
-						<div class="productwrap">
-						<div class="pr-img">
-							<div class="new"></div>
-							<a href="product.htm"><img src="images\sample-2.jpg" alt="" class="img-responsive"></a>
-							<div class="pricetag blue"><div class="inner">$199</div></div>
-						</div>
-							<span class="smalltitle"><a href="product.htm">Black Shoes</a></span>
-							<span class="smalldesc">Item no.: 1000</span>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="productwrap">
-						<div class="pr-img">
-							<a href="product.htm"><img src="images\sample-1.jpg" alt="" class="img-responsive"></a>
-							<div class="pricetag"><div class="inner">$199</div></div>
-						</div>
-							<span class="smalltitle"><a href="product.htm">Nikon Camera</a></span>
-							<span class="smalldesc">Item no.: 1000</span>
-						</div>
-					</div>
+					<?php } ?>
 				</div><!--Products-->
 				<div class="spacer"></div>
 			</div><!--Main content-->
