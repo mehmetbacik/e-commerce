@@ -21,78 +21,30 @@ require_once 'header.php';
 				</div>
 			</div>
 			<div id="product-carousel" class="owl-carousel owl-theme">
+
+				<?php 
+					$productcheck=$db->prepare("SELECT * FROM product WHERE product_status=:product_status and product_homeshowcase=:product_homeshowcase");
+					$productcheck->execute([
+						'product_status' => 1,
+						'product_homeshowcase' => 1,
+						]);
+					while ($productbring=$productcheck->fetch(PDO::FETCH_ASSOC)) {
+				?>
+
 				<div class="item">
 					<div class="productwrap">
 						<div class="pr-img">
 							<div class="hot"></div>
-							<a href="product.htm"><img src="images\sample-1.jpg" alt="" class="img-responsive"></a>
-							<div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
+							<a href="product-<?=seo($productbring["product_name"]).'-'.$productbring["product_id"]?>"><img src="http://via.placeholder.com/250x250" alt="" class="img-responsive"></a>
+							<div class="pricetag blue"><div class="inner"><span><?php echo $productbring['product_price']; ?></span></div></div>
 						</div>
-							<span class="smalltitle"><a href="product.htm">Nikon Camera</a></span>
-							<span class="smalldesc">Item no.: 1000</span>
+							<span class="smalltitle"><a href="product-<?=seo($productbring["product_name"]).'-'.$productbring["product_id"]?>"><?php echo $productbring['product_name']; ?></a></span>
+							<span class="smalldesc">Item no.: <?php echo $productbring['product_id']; ?></span>
 					</div>
 				</div>
-				<div class="item">
-					<div class="productwrap">
-						<div class="pr-img">
-							<div class="new"></div>
-							<a href="product.htm"><img src="images\sample-2.jpg" alt="" class="img-responsive"></a>
-							<div class="pricetag on-sale"><div class="inner on-sale"><span class="onsale"><span class="oldprice">$314</span>$199</span></div></div>
-						</div>
-							<span class="smalltitle"><a href="product.htm">Black Shoes</a></span>
-							<span class="smalldesc">Item no.: 1000</span>
-					</div>
-				</div>
-				<div class="item">
-					<div class="productwrap">
-						<div class="pr-img">
-							<a href="product.htm"><img src="images\sample-3.jpg" alt="" class="img-responsive"></a>
-							<div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
-						</div>
-							<span class="smalltitle"><a href="product.htm">Red T-Shirt</a></span>
-							<span class="smalldesc">Item no.: 1000</span>
-					</div>
-				</div>
-				<div class="item">
-					<div class="productwrap">
-						<div class="pr-img">
-							<a href="product.htm"><img src="images\sample-1.jpg" alt="" class="img-responsive"></a>
-							<div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
-						</div>
-							<span class="smalltitle"><a href="product.htm">Nikon Camera</a></span>
-							<span class="smalldesc">Item no.: 1000</span>
-					</div>
-				</div>
-				<div class="item">
-					<div class="productwrap">
-						<div class="pr-img">
-							<a href="product.htm"><img src="images\sample-2.jpg" alt="" class="img-responsive"></a>
-							<div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
-						</div>
-							<span class="smalltitle"><a href="product.htm">Black Shoes</a></span>
-							<span class="smalldesc">Item no.: 1000</span>
-					</div>
-				</div>
-				<div class="item">
-					<div class="productwrap">
-						<div class="pr-img">
-							<a href="product.htm"><img src="images\sample-3.jpg" alt="" class="img-responsive"></a>
-							<div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
-						</div>
-							<span class="smalltitle"><a href="product.htm">Red T-Shirt</a></span>
-							<span class="smalldesc">Item no.: 1000</span>
-					</div>
-				</div>
-				<div class="item">
-					<div class="productwrap">
-						<div class="pr-img">
-							<a href="product.htm"><img src="images\sample-1.jpg" alt="" class="img-responsive"></a>
-							<div class="pricetag blue"><div class="inner"><span>$199</span></div></div>
-						</div>
-							<span class="smalltitle"><a href="product.htm">Nikon Camera</a></span>
-							<span class="smalldesc">Item no.: 1000</span>
-					</div>
-				</div>
+
+				<?php } ?>
+
 			</div>
 		</div>
 	</div>

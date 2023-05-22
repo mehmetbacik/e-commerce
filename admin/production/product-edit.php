@@ -127,6 +127,16 @@ $producteditbring=$sql->fetch(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="showcase">Showcase</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select id="heard" class="form-control" name="product_homeshowcase" required>
+                                        <?php echo $producteditbring['product_homeshowcase'] == '1' ? 'selected=""' : ''; ?>
+                                        <option value="1" <?php echo $producteditbring['product_homeshowcase'] == '1' ? 'selected=""' : ''; ?>>Yes</option>
+                                        <option value="0" <?php if ($producteditbring['product_homeshowcase'] == 0) { echo 'selected=""'; } ?>>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="status">Status</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select id="heard" class="form-control" name="product_status" required>
