@@ -719,7 +719,7 @@ if (isset($_POST['productadd'])) {
 /*Product-Add*/
 
 /*Admin - Home Showcase Button */
-if ($_GET['product_homeshowcase']=="active") {
+if ($_GET['product_homeshowcase']=="passive") {
 
 	$edit=$db->prepare("UPDATE product SET
 		product_homeshowcase=:product_homeshowcase
@@ -728,10 +728,18 @@ if ($_GET['product_homeshowcase']=="active") {
 		'product_homeshowcase' => $_GET['product_hs']
 		));
 	if ($update) {
-		header("Location:../production/product.php&status=active");
+		header("Location:../production/product.php");
         exit;
-	} else {
-		header("Location:../production/product.php&status=passive");
+	}
+} elseif ($_GET['product_homeshowcase']=="active") {
+	$edit=$db->prepare("UPDATE product SET
+		product_homeshowcase=:product_homeshowcase
+		WHERE product_id={$_GET['product_id']}");
+	$update=$edit->execute(array(
+		'product_homeshowcase' => $_GET['product_hs']
+		));
+	if ($update) {
+		header("Location:../production/product.php");
         exit;
 	}
 }
