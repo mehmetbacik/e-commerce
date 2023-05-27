@@ -54,6 +54,7 @@ $productcontrol->execute();
                   <th>Product Price</th>
                   <th>Product Stock</th>
                   <th>Product Order</th>
+                  <th>Product Showcase</th>
                   <th>Product Status</th>
                   <th></th>
                   <th></th>
@@ -69,6 +70,25 @@ $productcontrol->execute();
                   <td><?php echo $productbring['product_price'] ?></td>
                   <td><?php echo $productbring['product_stock'] ?></td>
                   <td><?php echo $productbring['product_order'] ?></td>
+                  <td>
+                    <center>
+                      <?php 
+                        if ($productbring['product_homeshowcase']==0) {
+                      ?>
+                        <a href="../system/work.php?product_id=<?php echo $productbring['product_id'] ?>&product_hs=1&product_homeshowcase=active">
+                          <button class="btn btn-xs btn-warning">Passive</button>
+                        </a>
+                      <?php  
+                        } elseif ($productbring['product_homeshowcase']==1) {
+                      ?>
+                        <a href="../system/work.php?product_id=<?php echo $productbring['product_id'] ?>&product_hs=0&product_homeshowcase=passive">
+                          <button class="btn btn-xs btn-primary">Active</button>
+                        </a>
+                      <?php
+                        }
+                      ?>
+                    </center>
+                  </td>
                   <td>
                     <center>
                     <?php 
