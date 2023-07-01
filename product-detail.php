@@ -103,11 +103,12 @@
 								if(isset($_SESSION['usercustomer_mail'])) { 
 							?>
 								<h4>Write Review</h4>
-								<form role="form">
+								<form action="admin/system/work.php" method="POST" role="form">
 									<div class="form-group">
-										<textarea class="form-control" id="text"></textarea>
+										<textarea name="comment_detail" class="form-control" id="text"></textarea>
 									</div>
-									<button type="submit" class="btn btn-default btn-red btn-sm">Submit</button>
+									<input type="hidden" name="user_id" value="<?php echo $userbring['user_id'] ?>">
+									<button type="submit" name="comment_save" class="btn btn-default btn-red btn-sm">Submit</button>
 								</form>
 							<?php
 								} else {
