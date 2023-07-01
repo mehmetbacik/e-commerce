@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 12 May 2023, 18:58:48
+-- Üretim Zamanı: 01 Tem 2023, 20:01:49
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -76,6 +76,19 @@ INSERT INTO `categories` (`category_id`, `category_name`, `category_top`, `categ
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `comments`
+--
+
+CREATE TABLE `comments` (
+  `comment_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `comment_detail` text COLLATE utf8_turkish_ci NOT NULL,
+  `comment_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `menu`
 --
 
@@ -96,9 +109,9 @@ CREATE TABLE `menu` (
 
 INSERT INTO `menu` (`menu_id`, `menu_top`, `menu_name`, `menu_detail`, `menu_url`, `menu_order`, `menu_status`, `menu_seourl`) VALUES
 (1, '0', 'About', '', 'about', 0, '1', 'about'),
-(3, '0', 'Contact', '', 'contact', 1, '1', 'contact'),
-(4, '0', 'Category', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>', '', 2, '1', 'category'),
-(7, '', 'Product', '<p>Menu Detail Content Text</p>', 'product', 3, '0', 'product');
+(3, '0', 'Contact', '<p>Contact Page Content</p>', '', 3, '1', 'contact'),
+(4, '0', 'Categories', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>', 'categories', 1, '1', 'categories'),
+(7, '', 'Product', '<p>Menu Detail Content Text</p>', 'product', 4, '0', 'product');
 
 -- --------------------------------------------------------
 
@@ -117,8 +130,28 @@ CREATE TABLE `product` (
   `product_video` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
   `product_keyword` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
   `product_stock` int(11) NOT NULL,
-  `product_status` enum('0','1') COLLATE utf8_turkish_ci NOT NULL
+  `product_status` enum('0','1') COLLATE utf8_turkish_ci NOT NULL,
+  `product_order` int(2) NOT NULL,
+  `product_homeshowcase` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `product`
+--
+
+INSERT INTO `product` (`product_id`, `category_id`, `product_time`, `product_name`, `product_seourl`, `product_detail`, `product_price`, `product_video`, `product_keyword`, `product_stock`, `product_status`, `product_order`, `product_homeshowcase`) VALUES
+(1, 3, '2023-05-12 19:45:10', 'Product Name', 'product-name', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis vestibulum metus non pellentesque. Curabitur viverra nec augue vitae malesuada. Aenean a eros sed nibh consectetur porta id in nulla. Donec iaculis fringilla mollis. Nunc at justo nisl. Aenean lobortis interdum ex ac facilisis. Ut imperdiet tellus dolor, sit amet ornare nisi posuere sit amet. Nunc quis ante diam. Sed sit amet vehicula massa, nec venenatis erat. Maecenas malesuada urna faucibus enim volutpat, nec imperdiet neque maximus. Etiam aliquam, ante vel aliquam sollicitudin, nunc quam malesuada lectus, vitae congue elit metus sed lectus. Integer interdum gravida neque, in pharetra ante. Ut vitae quam ac risus elementum rutrum. Fusce vitae massa ipsum. Nam eu convallis diam. Cras dignissim tellus ipsum, at varius lorem volutpat quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices, purus a semper gravida, turpis orci cursus ex, ut vestibulum lacus diam non ex. Aliquam erat volutpat. Aenean auctor lacinia ex efficitur tempor.</p>', 375.00, 'jNQXAC9IVRw', 'product, price, stock, name ', 125, '1', 1, '1'),
+(3, 9, '2023-05-15 20:25:44', 'Product Namee', 'product-namee', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 421.00, 'test', 'product, price, stock, name ', 8, '1', 2, '1'),
+(4, 7, '2023-05-15 20:27:41', 'Productt Namee', 'productt-namee', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 583.00, '', 'product, price, stock, name ', 0, '1', 3, '0'),
+(5, 1, '2023-05-12 19:45:10', 'Product Name1', 'product-name1', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis vestibulum metus non pellentesque. Curabitur viverra nec augue vitae malesuada. Aenean a eros sed nibh consectetur porta id in nulla. Donec iaculis fringilla mollis. Nunc at justo nisl. Aenean lobortis interdum ex ac facilisis. Ut imperdiet tellus dolor, sit amet ornare nisi posuere sit amet. Nunc quis ante diam. Sed sit amet vehicula massa, nec venenatis erat. Maecenas malesuada urna faucibus enim volutpat, nec imperdiet neque maximus. Etiam aliquam, ante vel aliquam sollicitudin, nunc quam malesuada lectus, vitae congue elit metus sed lectus. Integer interdum gravida neque, in pharetra ante. Ut vitae quam ac risus elementum rutrum. Fusce vitae massa ipsum. Nam eu convallis diam. Cras dignissim tellus ipsum, at varius lorem volutpat quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices, purus a semper gravida, turpis orci cursus ex, ut vestibulum lacus diam non ex. Aliquam erat volutpat. Aenean auctor lacinia ex efficitur tempor.</p>', 375.00, 'test', 'product, price, stock, name ', 125, '1', 4, '1'),
+(6, 2, '2023-05-15 20:25:44', 'Product Namee1', 'product-namee1', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 421.00, 'test', 'product, price, stock, name ', 8, '1', 5, '0'),
+(7, 4, '2023-05-15 20:27:41', 'Productt Namee1', 'productt-namee1', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 583.00, 'test', 'product, price, stock, name ', 5, '1', 6, '1'),
+(8, 5, '2023-05-12 19:45:10', 'Product Name2', 'product-name2', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis vestibulum metus non pellentesque. Curabitur viverra nec augue vitae malesuada. Aenean a eros sed nibh consectetur porta id in nulla. Donec iaculis fringilla mollis. Nunc at justo nisl. Aenean lobortis interdum ex ac facilisis. Ut imperdiet tellus dolor, sit amet ornare nisi posuere sit amet. Nunc quis ante diam. Sed sit amet vehicula massa, nec venenatis erat. Maecenas malesuada urna faucibus enim volutpat, nec imperdiet neque maximus. Etiam aliquam, ante vel aliquam sollicitudin, nunc quam malesuada lectus, vitae congue elit metus sed lectus. Integer interdum gravida neque, in pharetra ante. Ut vitae quam ac risus elementum rutrum. Fusce vitae massa ipsum. Nam eu convallis diam. Cras dignissim tellus ipsum, at varius lorem volutpat quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices, purus a semper gravida, turpis orci cursus ex, ut vestibulum lacus diam non ex. Aliquam erat volutpat. Aenean auctor lacinia ex efficitur tempor.</p>', 375.00, 'test', 'product, price, stock, name ', 125, '1', 7, '0'),
+(9, 1, '2023-05-15 20:25:44', 'Product Namee2', 'product-namee2', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 421.00, 'test', 'product, price, stock, name ', 8, '1', 8, '1'),
+(10, 6, '2023-05-15 20:27:41', 'Productt Namee2', 'productt-namee2', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 583.00, 'test', 'product, price, stock, name ', 5, '1', 9, '1'),
+(11, 3, '2023-05-12 19:45:10', 'Product Name3', 'product-name3', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis vestibulum metus non pellentesque. Curabitur viverra nec augue vitae malesuada. Aenean a eros sed nibh consectetur porta id in nulla. Donec iaculis fringilla mollis. Nunc at justo nisl. Aenean lobortis interdum ex ac facilisis. Ut imperdiet tellus dolor, sit amet ornare nisi posuere sit amet. Nunc quis ante diam. Sed sit amet vehicula massa, nec venenatis erat. Maecenas malesuada urna faucibus enim volutpat, nec imperdiet neque maximus. Etiam aliquam, ante vel aliquam sollicitudin, nunc quam malesuada lectus, vitae congue elit metus sed lectus. Integer interdum gravida neque, in pharetra ante. Ut vitae quam ac risus elementum rutrum. Fusce vitae massa ipsum. Nam eu convallis diam. Cras dignissim tellus ipsum, at varius lorem volutpat quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices, purus a semper gravida, turpis orci cursus ex, ut vestibulum lacus diam non ex. Aliquam erat volutpat. Aenean auctor lacinia ex efficitur tempor.</p>', 375.00, 'test', 'product, price, stock, name ', 125, '1', 10, '0'),
+(12, 9, '2023-05-15 20:25:44', 'Product Namee3', 'product-namee3', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 421.00, 'test', 'product, price, stock, name ', 8, '1', 11, '1'),
+(13, 7, '2023-05-15 20:27:41', 'Productt Namee3', 'productt-namee3', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 583.00, 'test', 'product, price, stock, name ', 5, '1', 12, '1');
 
 -- --------------------------------------------------------
 
@@ -238,6 +271,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`category_id`);
 
 --
+-- Tablo için indeksler `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comment_id`);
+
+--
 -- Tablo için indeksler `menu`
 --
 ALTER TABLE `menu`
@@ -278,6 +317,12 @@ ALTER TABLE `categories`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- Tablo için AUTO_INCREMENT değeri `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `menu`
 --
 ALTER TABLE `menu`
@@ -287,7 +332,7 @@ ALTER TABLE `menu`
 -- Tablo için AUTO_INCREMENT değeri `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `setting`
