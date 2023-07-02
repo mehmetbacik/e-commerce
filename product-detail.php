@@ -9,7 +9,15 @@
 			exit;	
 		}
 	?>
-
+	<?php 
+		if ($_GET['status']=="success") {
+	?>
+			<script type="text/javascript">
+				alert("Comment Added Successfully");
+			</script>
+	<?php 
+		}
+	?>
 	<div class="container">
 		<div class="clearfix"></div>
 		<div class="lines"></div>
@@ -86,15 +94,15 @@
 
 				<div class="tab-review">
 					<ul id="myTab" class="nav nav-tabs shop-tab">
-						<li class="active"><a href="#desc" data-toggle="tab">Description</a></li>
-						<li class=""><a href="#rev" data-toggle="tab">Reviews (0)</a></li>
+						<li <?php if ($_GET['status']!="success") {?> class="active" <?php } ?>><a href="#desc" data-toggle="tab">Description</a></li>
+						<li <?php if ($_GET['status']=="success") {?> class="active" <?php } ?>><a href="#rev" data-toggle="tab">Reviews (0)</a></li>
 						<li class=""><a href="#video" data-toggle="tab">Video</a></li>
 					</ul>
 					<div id="myTabContent" class="tab-content shop-tab-ct">
-						<div class="tab-pane fade active in" id="desc">
+						<div class="tab-pane fade <?php if ($_GET['status']!="success") {?> active in <?php } ?>" id="desc">
 							<?php echo $productbring['product_detail']; ?>
 						</div>
-						<div class="tab-pane fade" id="rev">
+						<div class="tab-pane fade <?php if ($_GET['status']=="success") {?> active in <?php } ?>" id="rev">
 							<p class="dash">
 							<span>Jhon Doe</span> (11/25/2012)<br><br>
 							Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.
@@ -108,6 +116,7 @@
 										<textarea name="comment_detail" class="form-control" id="text"></textarea>
 									</div>
 									<input type="hidden" name="user_id" value="<?php echo $userbring['user_id'] ?>">
+									<input type="hidden" name="page_url" value="<?php echo "http://".$_SERVER['HTTP_HOST']."".$_SERVER['REQUEST_URI']."";?>">
 									<button type="submit" name="comment_save" class="btn btn-default btn-red btn-sm">Submit</button>
 								</form>
 							<?php

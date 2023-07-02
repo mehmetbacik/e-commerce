@@ -744,4 +744,29 @@ if ($_GET['product_homeshowcase']=="passive") {
 	}
 }
 /*Admin - Home Showcase Button */
+
+/*Comment-Save*/
+if (isset($_POST['comment_save'])) {
+    $page_url=$_POST['page_url'];
+    $sql=$db->prepare("INSERT INTO comments SET 
+        comment_detail=:comment_detail,
+        user_id=:user_id
+    ");
+    $insert=$sql->execute(
+        [
+            'comment_detail' => $_POST['comment_detail'],
+            'user_id' => $_POST['user_id']
+        ]
+    );
+
+    if($insert) {
+        header("Location:$page_url?status=success");
+        exit;
+    } else {
+        header("Location:$page_url?status=error");
+        exit;
+    }
+}
+/*Comment-Save*/
+
 ?>
