@@ -92,10 +92,20 @@
 					</div>
 				</div>
 
+				<?php
+					$user_id=$userbring['user_id'];
+					$product_id=$productbring['product_id'];
+					$commentsql=$db->prepare("SELECT * FROM comments WHERE user_id=:id and product_id=:product_id");
+					$commentsql->execute([
+						'id' => $user_id,
+						'product_id' => $product_id
+					]);
+				?>
+				
 				<div class="tab-review">
 					<ul id="myTab" class="nav nav-tabs shop-tab">
 						<li <?php if ($_GET['status']!="success") {?> class="active" <?php } ?>><a href="#desc" data-toggle="tab">Description</a></li>
-						<li <?php if ($_GET['status']=="success") {?> class="active" <?php } ?>><a href="#rev" data-toggle="tab">Reviews (0)</a></li>
+						<li <?php if ($_GET['status']=="success") {?> class="active" <?php } ?>><a href="#rev" data-toggle="tab">Reviews (<?php echo $commentsql->rowCount(); ?>)</a></li>
 						<li class=""><a href="#video" data-toggle="tab">Video</a></li>
 					</ul>
 					<div id="myTabContent" class="tab-content shop-tab-ct">
@@ -103,10 +113,16 @@
 							<?php echo $productbring['product_detail']; ?>
 						</div>
 						<div class="tab-pane fade <?php if ($_GET['status']=="success") {?> active in <?php } ?>" id="rev">
-							<p class="dash">
-							<span>Jhon Doe</span> (11/25/2012)<br><br>
-							Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.
-							</p>
+							<?php
+								while ($commentbring=$commentsql->fetch(PDO::FETCH_ASSOC)) {
+							?>
+								<p class="dash">
+								<span>Jhon Doe</span> (11/25/2012)<br><br>
+								Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+								</p>
+							<?php 								
+								};
+							?>
 							<?php
 								if(isset($_SESSION['usercustomer_mail'])) { 
 							?>
