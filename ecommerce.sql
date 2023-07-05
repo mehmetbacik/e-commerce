@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 01 Tem 2023, 20:01:49
+-- Üretim Zamanı: 05 Tem 2023, 08:14:56
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -82,9 +82,19 @@ INSERT INTO `categories` (`category_id`, `category_name`, `category_top`, `categ
 CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `comment_detail` text COLLATE utf8_turkish_ci NOT NULL,
   `comment_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `comments`
+--
+
+INSERT INTO `comments` (`comment_id`, `user_id`, `product_id`, `comment_detail`, `comment_time`) VALUES
+(1, 8, 9, 'test', '2023-07-02 20:04:09'),
+(2, 8, 9, 'test', '2023-07-02 20:12:53'),
+(3, 8, 9, 'test comment', '2023-07-02 20:30:26');
 
 -- --------------------------------------------------------
 
@@ -320,7 +330,7 @@ ALTER TABLE `categories`
 -- Tablo için AUTO_INCREMENT değeri `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `menu`
