@@ -95,9 +95,8 @@
 				<?php
 					$user_id=$userbring['user_id'];
 					$product_id=$productbring['product_id'];
-					$commentsql=$db->prepare("SELECT * FROM comments WHERE user_id=:id and product_id=:product_id");
+					$commentsql=$db->prepare("SELECT * FROM comments WHERE product_id=:product_id");
 					$commentsql->execute([
-						'id' => $user_id,
 						'product_id' => $product_id
 					]);
 				?>
@@ -115,10 +114,17 @@
 						<div class="tab-pane fade <?php if ($_GET['status']=="success") {?> active in <?php } ?>" id="rev">
 							<?php
 								while ($commentbring=$commentsql->fetch(PDO::FETCH_ASSOC)) {
+
+								$commentuser_id=$commentbring['user_id'];
+								$commentuser_check=$db->prepare("SELECT * FROM user where user_id=:id");
+								$commentuser_check->execute(array(
+									'id' => $commentuser_id
+								));
+								$commentuserbring=$commentuser_check->fetch(PDO::FETCH_ASSOC);
 							?>
 								<p class="dash">
-								<span>Jhon Doe</span> (11/25/2012)<br><br>
-								Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+								<span><?php echo $commentuserbring['user_name'] ?></span> (<?php echo $commentbring['comment_time'] ?>)<br><br>
+								<?php echo $commentbring['comment_detail'] ?>
 								</p>
 							<?php 								
 								};
@@ -133,6 +139,7 @@
 									</div>
 									<input type="hidden" name="user_id" value="<?php echo $userbring['user_id'] ?>">
 									<input type="hidden" name="page_url" value="<?php echo "http://".$_SERVER['HTTP_HOST']."".$_SERVER['REQUEST_URI']."";?>">
+									<input type="hidden" name="product_id" value="<?php echo $productbring['product_id'] ?>">
 									<button type="submit" name="comment_save" class="btn btn-default btn-red btn-sm">Submit</button>
 								</form>
 							<?php

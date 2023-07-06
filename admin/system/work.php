@@ -750,12 +750,14 @@ if (isset($_POST['comment_save'])) {
     $page_url=$_POST['page_url'];
     $sql=$db->prepare("INSERT INTO comments SET 
         comment_detail=:comment_detail,
-        user_id=:user_id
+        user_id=:user_id,
+        product_id=:product_id
     ");
     $insert=$sql->execute(
         [
             'comment_detail' => $_POST['comment_detail'],
-            'user_id' => $_POST['user_id']
+            'user_id' => $_POST['user_id'],
+            'product_id' => $_POST['product_id']
         ]
     );
 
