@@ -11,7 +11,7 @@ $commentcontrol->execute();
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>comments <small>
+            <h2>Comments<small>
               <?php 
               if (isset($_GET['remove'])) {
               if ($_GET['remove']=="success") {?>
@@ -49,7 +49,7 @@ $commentcontrol->execute();
             <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
               <thead>
                 <tr>
-                  <th>S.No</th>
+                  <th>C.No</th>
                   <th>Comment Detail</th>
                   <th>User</th>
                   <th>Product</th>
