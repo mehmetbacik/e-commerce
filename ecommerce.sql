@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 07 Tem 2023, 20:27:44
+-- Üretim Zamanı: 07 Tem 2023, 20:47:53
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -43,6 +43,19 @@ CREATE TABLE `about` (
 
 INSERT INTO `about` (`about_id`, `about_title`, `about_content`, `about_video`, `about_vision`, `about_mission`) VALUES
 (1, 'About Title', '<p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </strong>Proin sed ex vel elit luctus euismod. Donec commodo a massa quis ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum placerat massa, eu ornare nibh sagittis sit amet. Nullam convallis cursus scelerisque. Ut iaculis sollicitudin dolor, vel lobortis leo tempus in. Donec rutrum justo id viverra convallis. Fusce gravida ullamcorper posuere.</p>', 'jNQXAC9IVRw', 'Nullam ut varius sapien. In quis urna ut felis hendrerit vehicula tincidunt eu mi. Donec varius varius sem at bibendum. Mauris placerat libero ut accumsan tempor. Praesent eu sodales urna. Morbi sed metus convallis, egestas nisl vel, tristique ante.', 'Nullam ut varius sapien. In quis urna ut felis hendrerit vehicula tincidunt eu mi. Donec varius varius sem at bibendum. Mauris placerat libero ut accumsan tempor. Praesent eu sodales urna. Morbi sed metus convallis, egestas nisl vel, tristique ante.');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `basket`
+--
+
+CREATE TABLE `basket` (
+  `basket_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_unit` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- --------------------------------------------------------
 
@@ -93,12 +106,11 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `user_id`, `product_id`, `comment_detail`, `comment_time`, `comment_status`) VALUES
-(1, 8, 9, 'test', '2023-07-02 20:04:09', '0'),
+(1, 8, 9, 'test', '2023-07-02 20:04:09', '1'),
 (2, 8, 9, 'test', '2023-07-02 20:12:53', '0'),
-(3, 8, 9, 'test comment', '2023-07-02 20:30:26', '0'),
+(3, 8, 9, 'test comment', '2023-07-02 20:30:26', '1'),
 (4, 8, 9, 'Test Comment', '2023-07-06 19:25:30', '0'),
-(5, 8, 9, 'test', '2023-07-06 19:41:32', '0'),
-(6, 8, 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut cursus turpis, id porta augue. Duis efficitur, leo sit amet luctus venenatis, risus sem accumsan justo, et fringilla magna nisi vitae lectus. Quisque euismod molestie viverra. Donec consectetur dui vitae justo pharetra malesuada. Praesent euismod lectus velit. Nullam dignissim finibus libero, eget aliquam justo volutpat eu. Nullam at feugiat augue. Fusce non laoreet metus, eget gravida magna.', '2023-07-07 20:11:56', '0');
+(6, 8, 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut cursus turpis, id porta augue. Duis efficitur, leo sit amet luctus venenatis, risus sem accumsan justo, et fringilla magna nisi vitae lectus. Quisque euismod molestie viverra. Donec consectetur dui vitae justo pharetra malesuada. Praesent euismod lectus velit. Nullam dignissim finibus libero, eget aliquam justo volutpat eu. Nullam at feugiat augue. Fusce non laoreet metus, eget gravida magna.', '2023-07-07 20:11:56', '1');
 
 -- --------------------------------------------------------
 
@@ -279,6 +291,12 @@ ALTER TABLE `about`
   ADD PRIMARY KEY (`about_id`);
 
 --
+-- Tablo için indeksler `basket`
+--
+ALTER TABLE `basket`
+  ADD PRIMARY KEY (`basket_id`);
+
+--
 -- Tablo için indeksler `categories`
 --
 ALTER TABLE `categories`
@@ -323,6 +341,12 @@ ALTER TABLE `user`
 --
 -- Dökümü yapılmış tablolar için AUTO_INCREMENT değeri
 --
+
+--
+-- Tablo için AUTO_INCREMENT değeri `basket`
+--
+ALTER TABLE `basket`
+  MODIFY `basket_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `categories`
