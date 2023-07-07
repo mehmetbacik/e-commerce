@@ -771,4 +771,45 @@ if (isset($_POST['comment_save'])) {
 }
 /*Comment-Save*/
 
+/*Comment Status*/
+if ($_GET['comment_status']=="passive") {
+
+	$edit=$db->prepare("UPDATE comments SET
+		comment_status=:comment_status
+		WHERE comment_id={$_GET['comment_id']}");
+	$update=$edit->execute(array(
+		'comment_status' => $_GET['comment_st']
+		));
+	if ($update) {
+		header("Location:../production/comment.php");
+        exit;
+	}
+} elseif ($_GET['comment_status']=="active") {
+	$edit=$db->prepare("UPDATE comments SET
+		comment_status=:comment_status
+		WHERE comment_id={$_GET['comment_id']}");
+	$update=$edit->execute(array(
+		'comment_status' => $_GET['comment_st']
+		));
+	if ($update) {
+		header("Location:../production/comment.php");
+        exit;
+	}
+}
+/*Comment Status*/
+
+/*Comment-Remove*/
+if ($_GET['commentremove']=="approval") {
+	$commentremove=$db->prepare("DELETE from comments where comment_id=:id");
+	$commentcontrol=$commentremove->execute(array(
+		'id' => $_GET['comment_id']
+		));
+	if ($commentcontrol) {
+		header("location:../production/comment.php?remove=success");
+	} else {
+		header("location:../production/comment.php?remove=error");
+	}
+}
+/*Comment-Remove*/
+
 ?>

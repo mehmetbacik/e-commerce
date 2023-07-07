@@ -95,9 +95,10 @@
 				<?php
 					$user_id=$userbring['user_id'];
 					$product_id=$productbring['product_id'];
-					$commentsql=$db->prepare("SELECT * FROM comments WHERE product_id=:product_id");
+					$commentsql=$db->prepare("SELECT * FROM comments WHERE product_id=:product_id and comment_status=:comment_status");
 					$commentsql->execute([
-						'product_id' => $product_id
+						'product_id' => $product_id,
+						'comment_status' => 1
 					]);
 				?>
 				
