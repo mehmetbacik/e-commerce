@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 05 Tem 2023, 08:14:56
+-- Üretim Zamanı: 07 Tem 2023, 20:27:44
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -84,17 +84,21 @@ CREATE TABLE `comments` (
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `comment_detail` text COLLATE utf8_turkish_ci NOT NULL,
-  `comment_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `comment_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `comment_status` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
 -- Tablo döküm verisi `comments`
 --
 
-INSERT INTO `comments` (`comment_id`, `user_id`, `product_id`, `comment_detail`, `comment_time`) VALUES
-(1, 8, 9, 'test', '2023-07-02 20:04:09'),
-(2, 8, 9, 'test', '2023-07-02 20:12:53'),
-(3, 8, 9, 'test comment', '2023-07-02 20:30:26');
+INSERT INTO `comments` (`comment_id`, `user_id`, `product_id`, `comment_detail`, `comment_time`, `comment_status`) VALUES
+(1, 8, 9, 'test', '2023-07-02 20:04:09', '0'),
+(2, 8, 9, 'test', '2023-07-02 20:12:53', '0'),
+(3, 8, 9, 'test comment', '2023-07-02 20:30:26', '0'),
+(4, 8, 9, 'Test Comment', '2023-07-06 19:25:30', '0'),
+(5, 8, 9, 'test', '2023-07-06 19:41:32', '0'),
+(6, 8, 7, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut cursus turpis, id porta augue. Duis efficitur, leo sit amet luctus venenatis, risus sem accumsan justo, et fringilla magna nisi vitae lectus. Quisque euismod molestie viverra. Donec consectetur dui vitae justo pharetra malesuada. Praesent euismod lectus velit. Nullam dignissim finibus libero, eget aliquam justo volutpat eu. Nullam at feugiat augue. Fusce non laoreet metus, eget gravida magna.', '2023-07-07 20:11:56', '0');
 
 -- --------------------------------------------------------
 
@@ -330,7 +334,7 @@ ALTER TABLE `categories`
 -- Tablo için AUTO_INCREMENT değeri `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `menu`
