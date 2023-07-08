@@ -812,4 +812,29 @@ if ($_GET['commentremove']=="approval") {
 }
 /*Comment-Remove*/
 
+/*AddToCart*/
+if (isset($_POST['addtocart'])) {
+    $sql=$db->prepare("INSERT INTO basket SET 
+        product_unit=:product_unit,
+        user_id=:user_id,
+        product_id=:product_id
+    ");
+    $insert=$sql->execute(
+        [
+            'product_unit' => $_POST['product_unit'],
+            'user_id' => $_POST['user_id'],
+            'product_id' => $_POST['product_id']
+        ]
+    );
+
+    if($insert) {
+        header("Location:../../basket.php?status=success");
+        exit;
+    } else {
+        header("Location:../../basket.php?status=error");
+        exit;
+    }
+}
+/*AddToCart*/
+
 ?>

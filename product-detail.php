@@ -50,20 +50,17 @@
 							<div class="infospan">Code <span><?php echo $productbring['product_id']; ?></span></div>
 							<div class="infospan">Price <span>$<?php echo $productbring['product_price']; ?></span></div>
 							
-							<form class="form-horizontal ava" role="form">
+							
+							<form action="admin/system/work.php" method="POST" class="form-horizontal ava" role="form">
 								<div class="form-group">
 									<label for="qty" class="col-sm-2 control-label">Qty</label>
 									<div class="col-sm-4">
-										<select class="form-control" id="qty">
-											<option>1
-											<option>2
-											<option>3
-											<option>4
-											<option>5
-										</select>
+										<input type="text" class="form-control" value="1" name="product_unit">
 									</div>
+									<input type="hidden" name="user_id" value="<?php echo $userbring['user_id'] ?>">
+									<input type="hidden" name="product_id" value="<?php echo $productbring['product_id'] ?>">
 									<div class="col-sm-4">
-										<button class="btn btn-default btn-red btn-sm"><span class="addchart">Add To Chart</span></button>
+										<button type="submit" name="addtocart" class="btn btn-default btn-red btn-sm"><span class="addchart">Add To Cart</span></button>
 									</div>
 									<div class="clearfix"></div>
 								</div>
