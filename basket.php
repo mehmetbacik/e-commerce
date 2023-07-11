@@ -19,7 +19,6 @@
 						<th>Remove</th>
 						<th>Image</th>
 						<th>Name</th>
-						<th>Model</th>
 						<th>Item No.</th>
 						<th>Quantity</th>
 						<th>Unit Price</th>
@@ -27,16 +26,29 @@
 					</tr>
 				</thead>
 				<tbody>
+					<?php 
+						$user_id=$userbring['user_id'];
+						$basketcheck=$db->prepare("SELECT * FROM basket WHERE user_id=:id");
+						$basketcheck->execute(['id' => $user_id]);
+						while ($basketbring=$basketcheck->fetch(PDO::FETCH_ASSOC)) {
+							$product_id=$basketbring['product_id'];
+							$productcheck=$db->prepare("SELECT * FROM product WHERE product_id=:product_id");
+							$productcheck->execute(['product_id' => $product_id]);
+							$productbring=$productcheck->fetch(PDO::FETCH_ASSOC);
+							$total_price+=$productbring['product_price']*$basketbring['product_unit']; 
+					?>
 					<tr>
 						<td><form><input type="checkbox"></form></td>
 						<td><img src="images\demo-img.jpg" width="100" alt=""></td>
-						<td>Some Camera</td>
-						<td>PR - 2</td>
-						<td>225883</td>
-						<td><form><input type="text" class="form-control quantity"></form></td>
-						<td>$94.00</td>
-						<td>$94.00</td>
+						<td><?php echo $productbring['product_name'] ?></td>
+						<td><?php echo $productbring['product_id'] ?></td>
+						<td><form><input type="text" class="form-control quantity" value="<?php echo $basketbring['product_unit'] ?>"></form></td>
+						<td>$ <?php echo $productbring['product_price'] ?></td>
+						<td>$ <?php echo $productbring['product_price']*$basketbring['product_unit'] ?></td>
 					</tr>
+					<?php
+						}
+					?>
 				</tbody>
 			</table>
 		</div>
@@ -56,11 +68,11 @@
 			</div>
 			<div class="col-md-3 col-md-offset-3">
 			<div class="subtotal-wrap">
-				<div class="subtotal">
-					<p>Sub Total : $26.00</p>
-					<p>Vat 17% : $54.00</p>
-				</div>
-				<div class="total">Total : <span class="bigprice">$255.00</span></div>
+				<!--<div class="subtotal">
+					<p>Sub Total : $00.00</p>
+					<p>Vat 17% : $00.00</p>
+				</div>-->
+				<div class="total">Total : <span class="bigprice">$ <?php echo $total_price ?></span></div>
 				<a href="" class="btn btn-default btn-red btn-sm">Checkout</a>
 				<a href="" class="btn btn-default btn-red btn-sm">Update</a>
 				<div class="clearfix"></div>
