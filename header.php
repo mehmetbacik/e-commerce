@@ -152,55 +152,53 @@
 							</ul>
 						</div>
 					</div>
+
 					<div class="col-md-2 machart">
-						<button id="popcart" class="btn btn-default btn-chart btn-sm "><span class="mychart">Cart</span>|<span class="allprice">$0.00</span></button>
+						<button id="popcart" class="btn btn-default btn-chart btn-sm "><span class="mychart">Cart</span>|<span class="allprice">$00.00</span></button>
 						<div class="popcart">
 							<table class="table table-condensed popcart-inner">
 								<tbody>
+								<?php 
+									$user_id=$userbring['user_id'];
+									$basketcheck=$db->prepare("SELECT * FROM basket WHERE user_id=:id");
+									$basketcheck->execute(['id' => $user_id]);
+									while ($basketbring=$basketcheck->fetch(PDO::FETCH_ASSOC)) {
+										$product_id=$basketbring['product_id'];
+										$productcheck=$db->prepare("SELECT * FROM product WHERE product_id=:product_id");
+										$productcheck->execute(['product_id' => $product_id]);
+										$productbring=$productcheck->fetch(PDO::FETCH_ASSOC);
+										$ctotal_price+=$productbring['product_price']*$basketbring['product_unit']; 
+								?>
 									<tr>
 										<td>
-										<a href="product.htm"><img src="images\dummy-1.png" alt="" class="img-responsive"></a>
+										<a href="#"><img src="images\dummy-1.png" alt="" class="img-responsive"></a>
 										</td>
-										<td><a href="product.htm">Casio Exilim Zoom</a><br><span>Color: green</span></td>
-										<td>1X</td>
-										<td>$138.80</td>
+										<td><a href="#"><?php echo $productbring['product_name'] ?></a></td>
+										<td><?php echo $basketbring['product_unit'] ?></td>
+										<td>$ <?php echo $productbring['product_price']*$basketbring['product_unit'] ?></td>
 										<td><a href=""><i class="fa fa-times-circle fa-2x"></i></a></td>
 									</tr>
-									<tr>
-										<td>
-										<a href="product.htm"><img src="images\dummy-1.png" alt="" class="img-responsive"></a>
-										</td>
-										<td><a href="product.htm">Casio Exilim Zoom</a><br><span>Color: green</span></td>
-										<td>1X</td>
-										<td>$138.80</td>
-										<td><a href=""><i class="fa fa-times-circle fa-2x"></i></a></td>
-									</tr>
-									<tr>
-										<td>
-										<a href="product.htm"><img src="images\dummy-1.png" alt="" class="img-responsive"></a>
-										</td>
-										<td><a href="product.htm">Casio Exilim Zoom</a><br><span>Color: green</span></td>
-										<td>1X</td>
-										<td>$138.80</td>
-										<td><a href=""><i class="fa fa-times-circle fa-2x"></i></a></td>
-									</tr>
+
+								<?php } ?>
+									
 								</tbody>
 							</table>
-							<span class="sub-tot">Sub-Total : <span>$277.60</span> | <span>Vat (17.5%)</span> : $36.00 </span>
+							<!--<span class="sub-tot">Sub-Total : <span>$277.60</span> | <span>Vat (17.5%)</span> : $36.00 </span>-->
 							<br>
 							<div class="btn-popcart">
 								<a href="checkout.htm" class="btn btn-default btn-red btn-sm">Checkout</a>
-								<a href="cart.htm" class="btn btn-default btn-red btn-sm">More</a>
+								<a href="basket.php" class="btn btn-default btn-red btn-sm">More</a>
 							</div>
 							<div class="popcart-tot">
 								<p>
 									Total<br>
-									<span>$313.60</span>
+									<span>$ <?php echo $ctotal_price ?></span>
 								</p>
 							</div>
 							<div class="clearfix"></div>
 						</div>
 					</div>
+
 					<?php
 						if(isset($_SESSION['usercustomer_mail'])) { 
 					?>
