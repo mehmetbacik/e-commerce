@@ -1,22 +1,6 @@
 ﻿<?php require_once 'header.php'; ?>
 
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="page-title-wrap">
-				<div class="page-title-inner">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="bigtitle">Orders</div>
-							<p>Lorem ipsum dolor sit amet.</p>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<form action="nedmin/netting/islem.php" method="POST" class="form-horizontal checkout" role="form">
 		<div class="row">
 			<div class="col-md-12">

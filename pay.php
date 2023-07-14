@@ -1,4 +1,4 @@
-﻿	<?php 
+<?php 
 		require_once 'header.php';
 	?>
 
@@ -9,14 +9,13 @@
 	
 	<div class="container">
 		<div class="title-bg">
-			<div class="title">Shopping Cart</div>
+			<div class="title">Pay</div>
 		</div>
 		
 		<div class="table-responsive">
 			<table class="table table-bordered chart">
 				<thead>
 					<tr>
-						<th>Remove</th>
 						<th>Image</th>
 						<th>Name</th>
 						<th>Item No.</th>
@@ -38,11 +37,10 @@
 							$total_price+=$productbring['product_price']*$basketbring['product_unit']; 
 					?>
 					<tr>
-						<td><form><input type="checkbox"></form></td>
 						<td><img src="images\demo-img.jpg" width="100" alt=""></td>
 						<td><?php echo $productbring['product_name'] ?></td>
 						<td><?php echo $productbring['product_id'] ?></td>
-						<td><form><input type="text" class="form-control quantity" value="<?php echo $basketbring['product_unit'] ?>"></form></td>
+						<td><?php echo $basketbring['product_unit'] ?></td>
 						<td>$ <?php echo $productbring['product_price'] ?></td>
 						<td>$ <?php echo $productbring['product_price']*$basketbring['product_unit'] ?></td>
 					</tr>
@@ -74,9 +72,23 @@
 				</div>-->
 				<div class="total">Total : <span class="bigprice">$ <?php echo $total_price ?></span></div>
 				<div class="clearfix"></div>
-				<a href="pay" class="btn btn-default btn-yellow">Continue Shopping</a>
+				<!--<a href="" class="btn btn-default btn-yellow">Pay</a>-->
 			</div>
 			<div class="clearfix"></div>
+			</div>
+		</div>
+        <div class="tab-review">
+            <ul id="myTab" class="nav nav-tabs shop-tab">
+				<li class="active"><a href="#bank" data-toggle="tab">Bank Payment</a></li>
+				<li class=""><a href="#card" data-toggle="tab">Credit Card</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content shop-tab-ct">
+				<div class="tab-pane fade active in" id="bank">
+                    Bank
+				</div>
+    			<div class="tab-pane fade" id="card">
+					Credit Card
+				</div>
 			</div>
 		</div>
 		<div class="spacer"></div>

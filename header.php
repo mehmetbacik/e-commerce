@@ -186,8 +186,7 @@
 							<!--<span class="sub-tot">Sub-Total : <span>$277.60</span> | <span>Vat (17.5%)</span> : $36.00 </span>-->
 							<br>
 							<div class="btn-popcart">
-								<a href="checkout.htm" class="btn btn-default btn-red btn-sm">Checkout</a>
-								<a href="basket.php" class="btn btn-default btn-red btn-sm">More</a>
+								<a href="basket" class="btn btn-default btn-red btn-sm">Basket</a>
 							</div>
 							<div class="popcart-tot">
 								<p>
