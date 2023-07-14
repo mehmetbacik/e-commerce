@@ -1,7 +1,7 @@
 ﻿<?php require_once 'header.php'; ?>
 
 <div class="container">
-	<form action="nedmin/netting/islem.php" method="POST" class="form-horizontal checkout" role="form">
+	<form action="admin/system/work.php" method="POST" class="form-horizontal checkout" role="form">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="title-bg">
