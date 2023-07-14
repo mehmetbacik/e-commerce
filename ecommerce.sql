@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 07 Tem 2023, 20:47:53
+-- Üretim Zamanı: 14 Tem 2023, 19:52:00
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -47,6 +47,20 @@ INSERT INTO `about` (`about_id`, `about_title`, `about_content`, `about_video`, 
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `bank`
+--
+
+CREATE TABLE `bank` (
+  `bank_id` int(11) NOT NULL,
+  `bank_name` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
+  `bank_iban` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
+  `bank_account` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
+  `bank_status` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `basket`
 --
 
@@ -56,6 +70,17 @@ CREATE TABLE `basket` (
   `product_id` int(11) NOT NULL,
   `product_unit` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `basket`
+--
+
+INSERT INTO `basket` (`basket_id`, `user_id`, `product_id`, `product_unit`) VALUES
+(1, 8, 1, 1),
+(2, 8, 5, 15),
+(3, 8, 5, 1),
+(4, 8, 5, 5),
+(5, 8, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -346,7 +371,7 @@ ALTER TABLE `user`
 -- Tablo için AUTO_INCREMENT değeri `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `basket_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `basket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `categories`
