@@ -79,7 +79,7 @@ $bankcontrol->execute();
                     </center>
                   </td>
                   <td><center><a href="bank-edit.php?bank_id=<?php echo $bankbring['bank_id'] ?>"><button class="btn btn-primary btn-xs">Edit</button></a></center></td>
-                  <td><center><a href="../system/work.php?category_id=<?php echo $bankbring['bank_id'] ?>&bankremove=approval"><button class="btn btn-danger btn-xs">Remove</button></a></center></td>
+                  <td><center><a href="../system/work.php?bank_id=<?php echo $bankbring['bank_id'] ?>&bankremove=approval"><button class="btn btn-danger btn-xs">Remove</button></a></center></td>
                 </tr>
                 <?php  }
                 ?>

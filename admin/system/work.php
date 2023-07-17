@@ -864,4 +864,49 @@ if (isset($_POST['bankadd'])) {
 }
 /*Bank-Add*/
 
+/*Bank-Edit*/
+if (isset($_POST['bankedit_save'])) {
+    $bank_id=$_POST['bank_id'];
+    $sql=$db->prepare("UPDATE bank SET 
+        bank_name=:bank_name,
+        bank_iban=:bank_iban,
+        bank_accountname=:bank_accountname,
+        bank_status=:bank_status
+        WHERE bank_id={$_POST['bank_id']}
+    ");
+    $update=$sql->execute(
+        [
+            'bank_name' => $_POST['bank_name'],
+            'bank_iban' => $_POST['bank_iban'],
+            'bank_accountname' => $_POST['bank_accountname'],
+            'bank_status' => $_POST['bank_status']
+        ]
+    );
+
+    if($update) {
+        $_SESSION['status']="success";
+        header("Location:../production/bank-edit.php?bank_id=$bank_id&success");
+        exit;
+    } else {
+        $_SESSION['status']="error";
+        header("Location:../production/bank-edit.php?bank_id=$bank_id&error");
+        exit;
+    }
+}
+/*Bank-Edit*/
+
+/*Bank-Remove*/
+if ($_GET['bankremove']=="approval") {
+	$bankremove=$db->prepare("DELETE from bank where bank_id=:id");
+	$bankcontrol=$bankremove->execute(array(
+		'id' => $_GET['bank_id']
+		));
+	if ($bankcontrol) {
+		header("location:../production/bank.php?remove=success");
+	} else {
+		header("location:../production/bank.php?remove=error");
+	}
+}
+/*Bank-Remove*/
+
 ?>
