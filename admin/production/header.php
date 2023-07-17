@@ -93,6 +93,9 @@
                                     <a href="product.php"><i class="fa fa-tag"></i> Products </a>
                                 </li>
                                 <li>
+                                    <a href="bank.php"><i class="fa fa-bank"></i> Banks </a>
+                                </li>
+                                <li>
                                     <a href="comment.php"><i class="fa fa-comment"></i> Comments </a>
                                 </li>
                                 <li>

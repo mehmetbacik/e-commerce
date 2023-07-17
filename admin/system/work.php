@@ -837,4 +837,31 @@ if (isset($_POST['addtocart'])) {
 }
 /*AddToCart*/
 
+/*Bank-Add*/
+if (isset($_POST['bankadd'])) {
+    $sql=$db->prepare("INSERT INTO bank SET 
+        bank_name=:bank_name,
+        bank_iban=:bank_iban,
+        bank_accountname=:bank_accountname,
+        bank_status=:bank_status
+    ");
+    $insert=$sql->execute(
+        [
+            'bank_name' => $_POST['bank_name'],
+            'bank_iban' => $_POST['bank_iban'],
+            'bank_accountname' => $_POST['bank_accountname'],
+            'bank_status' => $_POST['bank_status']
+        ]
+    );
+
+    if($insert) {
+        header("Location:../production/bank.php?status=success");
+        exit;
+    } else {
+        header("Location:../production/bank.php?status=error");
+        exit;
+    }
+}
+/*Bank-Add*/
+
 ?>
