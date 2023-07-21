@@ -84,7 +84,28 @@
 			</ul>
 			<div id="myTabContent" class="tab-content shop-tab-ct">
 				<div class="tab-pane fade active in" id="bank">
-                    Bank
+					<form action="admin/system/work.php" method="POST">
+						<p>
+							Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+							Nam quasi quis sed tempora nisi odio sint error aspernatur 
+							magni illum dignissimos perspiciatis veritatis incidunt, 
+							minus at dolorem fugit, mollitia quisquam!
+						</p>
+						<?php
+							$bankcontrol=$db->prepare("SELECT * FROM bank order by bank_id ASC");
+							$bankcontrol->execute();
+							while($bankbring=$bankcontrol->fetch(PDO::FETCH_ASSOC)) {
+						?>
+							<div>
+								<input type="radio" name="bank_id" value="<?php echo $bankbring['bank_id']?>">
+								<label><?php echo $bankbring['bank_name']?> - <?php echo $bankbring['bank_iban']?></label>
+							</div>
+						<?php
+							}
+						?>
+						<hr>
+						<button class="btn btn-success" type="submit" name="ordersave">Order</button>
+					</form>
 				</div>
     			<div class="tab-pane fade" id="card">
 					Credit Card
