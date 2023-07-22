@@ -909,4 +909,51 @@ if ($_GET['bankremove']=="approval") {
 }
 /*Bank-Remove*/
 
+/*User Password Update*/
+if (isset($_POST['userpassword-update'])) {
+	echo $user_oldpassword=trim($_POST['user_oldpassword']); echo "<br>";
+	echo $user_passwordone=trim($_POST['user_passwordone']); echo "<br>";
+	echo $user_passwordtwo=trim($_POST['user_passwordtwo']); echo "<br>";
+
+	$user_password=md5($user_oldpassword);
+
+	$userbring=$db->prepare("SELECT * FROM user WHERE user_password=:password");
+	$userbring->execute(array(
+		'password' => $user_password
+		));
+	$say=$userbring->rowCount();
+	if ($say==0) {
+		header("Location:../../password-change?status=oldpasswordfalse");
+	} else {
+		if ($user_passwordone==$user_passwordtwo) {
+			if (strlen($user_passwordone)>=6) {
+				$password=md5($user_passwordone);
+				$usersave=$db->prepare("UPDATE user SET
+					user_password=:user_password
+					WHERE user_id={$_POST['user_id']}");
+				$insert=$usersave->execute(array(
+					'user_password' => $password
+					));
+				if ($insert) {
+					header("Location:../../password-change.php?status=changesuccessful");
+				} else {
+					header("Location:../../password-change.php?status=error");
+				}
+			} else {
+				header("Location:../../password-change.php?status=missingpassword");
+			}
+		} else {
+			header("Location:../../password-change.php?status=notsame");
+			exit;
+		}
+	}
+	exit;
+	if ($update) {
+		header("Location:../../password-change.php?status=success");
+	} else {
+		header("Location:../../password-change.php?status=error");
+	}
+}
+/*User Password Update*/
+
 ?>

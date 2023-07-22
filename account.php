@@ -70,9 +70,9 @@
 			</div>
 			<div class="col-md-6">
 				<div class="title-bg">
-					<div class="title">Profil Photos</div>
+					<div class="title">Password Change</div>
 				</div>
-				<center><img width="400" src="https://via.placeholder.com/500x300"></center>
+				<center><a href="password-change"><img width="400" src="https://via.placeholder.com/500x300"></a></center>
 			</div>
 		</div>
 	</div>
