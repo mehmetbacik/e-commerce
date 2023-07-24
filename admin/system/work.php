@@ -956,4 +956,27 @@ if (isset($_POST['userpassword-update'])) {
 }
 /*User Password Update*/
 
+/*Order*/
+if (isset($_POST['bank_orderadd'])) {
+    $order_type="Bank Payment";
+    $save=$db->prepare("INSERT INTO orders SET
+        user_id=:user_id,
+        order_type=:order_type,	
+        order_bank=:order_bank,
+        order_total=:order_total
+        ");
+    $insert=$save->execute(array(
+        'user_id' => $_POST['user_id'],
+        'order_type' => $order_type,
+        'order_bank' => $_POST['order_bank'],
+        'order_total' => $_POST['order_total']		
+    ));
+    if ($insert) {
+        header("Location:../../orders.php?status=success");
+	} else {
+		header("Location:../../orders.php?status=error");
+	}
+}
+/*Order*/
+
 ?>

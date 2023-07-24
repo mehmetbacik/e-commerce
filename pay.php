@@ -103,8 +103,9 @@
 						<?php
 							}
 						?>
+						<input type="hidden" name="user_id" value="<?php echo $userbring['user_id'] ?>">
 						<hr>
-						<button class="btn btn-success" type="submit" name="ordersave">Order</button>
+						<button class="btn btn-success" type="submit" name="bank_orderadd">Order</button>
 					</form>
 				</div>
     			<div class="tab-pane fade" id="card">
