@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 14 Tem 2023, 19:52:00
+-- Üretim Zamanı: 24 Tem 2023, 19:30:56
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -54,9 +54,18 @@ CREATE TABLE `bank` (
   `bank_id` int(11) NOT NULL,
   `bank_name` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
   `bank_iban` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
-  `bank_account` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
+  `bank_accountname` varchar(100) COLLATE utf8_turkish_ci NOT NULL,
   `bank_status` enum('0','1') COLLATE utf8_turkish_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `bank`
+--
+
+INSERT INTO `bank` (`bank_id`, `bank_name`, `bank_iban`, `bank_accountname`, `bank_status`) VALUES
+(1, 'ABC Bank', 'BN01001111000123', 'Name Surname', '1'),
+(2, 'DEFG Bank', 'BN111122223334445', 'Namee Surname 2', '1'),
+(4, 'QWERTY Bank', 'BN98763454353342', 'Name Surname 3', '1');
 
 -- --------------------------------------------------------
 
@@ -80,7 +89,8 @@ INSERT INTO `basket` (`basket_id`, `user_id`, `product_id`, `product_unit`) VALU
 (2, 8, 5, 15),
 (3, 8, 5, 1),
 (4, 8, 5, 5),
-(5, 8, 5, 1);
+(5, 8, 5, 1),
+(8, 8, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -163,6 +173,22 @@ INSERT INTO `menu` (`menu_id`, `menu_top`, `menu_name`, `menu_detail`, `menu_url
 (3, '0', 'Contact', '<p>Contact Page Content</p>', '', 3, '1', 'contact'),
 (4, '0', 'Categories', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>', 'categories', 1, '1', 'categories'),
 (7, '', 'Product', '<p>Menu Detail Content Text</p>', 'product', 4, '0', 'product');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `orders`
+--
+
+CREATE TABLE `orders` (
+  `order_id` int(11) NOT NULL,
+  `order_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `order_no` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `order_total` float(9,2) NOT NULL,
+  `order_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
+  `order_pay` enum('0','1') CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- --------------------------------------------------------
 
@@ -316,6 +342,12 @@ ALTER TABLE `about`
   ADD PRIMARY KEY (`about_id`);
 
 --
+-- Tablo için indeksler `bank`
+--
+ALTER TABLE `bank`
+  ADD PRIMARY KEY (`bank_id`);
+
+--
 -- Tablo için indeksler `basket`
 --
 ALTER TABLE `basket`
@@ -368,10 +400,16 @@ ALTER TABLE `user`
 --
 
 --
+-- Tablo için AUTO_INCREMENT değeri `bank`
+--
+ALTER TABLE `bank`
+  MODIFY `bank_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `basket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `basket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `categories`
