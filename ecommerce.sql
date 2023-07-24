@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 24 Tem 2023, 19:30:56
+-- Üretim Zamanı: 24 Tem 2023, 20:07:50
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -187,6 +187,7 @@ CREATE TABLE `orders` (
   `user_id` int(11) NOT NULL,
   `order_total` float(9,2) NOT NULL,
   `order_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
+  `order_bank` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
   `order_pay` enum('0','1') CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
