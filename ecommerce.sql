@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 24 Tem 2023, 20:07:50
+-- Üretim Zamanı: 24 Tem 2023, 20:23:21
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -183,13 +183,20 @@ INSERT INTO `menu` (`menu_id`, `menu_top`, `menu_name`, `menu_detail`, `menu_url
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `order_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `order_no` int(11) NOT NULL,
+  `order_no` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `order_total` float(9,2) NOT NULL,
   `order_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
   `order_bank` varchar(50) COLLATE utf8_turkish_ci NOT NULL,
   `order_pay` enum('0','1') CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `order_time`, `order_no`, `user_id`, `order_total`, `order_type`, `order_bank`, `order_pay`) VALUES
+(1000, '2023-07-24 20:20:12', NULL, 8, 9000.00, 'Bank Payment', 'QWERTY Bank', '0');
 
 -- --------------------------------------------------------
 
@@ -373,6 +380,12 @@ ALTER TABLE `menu`
   ADD PRIMARY KEY (`menu_id`);
 
 --
+-- Tablo için indeksler `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`);
+
+--
 -- Tablo için indeksler `product`
 --
 ALTER TABLE `product`
@@ -429,6 +442,12 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `menu`
   MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product`

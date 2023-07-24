@@ -97,13 +97,14 @@
 							while($bankbring=$bankcontrol->fetch(PDO::FETCH_ASSOC)) {
 						?>
 							<div>
-								<input type="radio" name="bank_id" value="<?php echo $bankbring['bank_id']?>">
+								<input type="radio" name="order_bank" value="<?php echo $bankbring['bank_name']?>">
 								<label><?php echo $bankbring['bank_name']?> - <?php echo $bankbring['bank_iban']?></label>
 							</div>
 						<?php
 							}
 						?>
 						<input type="hidden" name="user_id" value="<?php echo $userbring['user_id'] ?>">
+						<input type="hidden" name="order_total" value="<?php echo $total_price ?>">
 						<hr>
 						<button class="btn btn-success" type="submit" name="bank_orderadd">Order</button>
 					</form>
