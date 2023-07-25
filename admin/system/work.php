@@ -1003,9 +1003,17 @@ if (isset($_POST['bank_orderadd'])) {
                 'product_unit' => $product_unit	
             ));
         }
-        //header("Location:../../orders.php?status=success");
+        if ($insert) {
+			$remove=$db->prepare("DELETE from basket where user_id=:user_id");
+			$check=$remove->execute(array(
+				'user_id' => $user_id
+				));
+			Header("Location:../../orders?status=success");
+			exit;
+		}
 	} else {
-		//header("Location:../../orders.php?status=error");
+		Header("Location:../../orders?status=error");
+        exit;
 	}
 }
 /*Order*/

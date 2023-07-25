@@ -19,12 +19,18 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>Some Camera</td>
-								<td>PR - 2</td>
-								<td>225883</td>
-								<td><a href="#"><button class="btn btn-primary btn-xs">Detail</button></a></td>
-							</tr>
+							<?php 
+							$user_id=$userbring['user_id'];
+							$ordercheck=$db->prepare("SELECT * FROM orders WHERE user_id=:id");
+							$ordercheck->execute(['id' => $user_id]);
+							while ($orderbring=$ordercheck->fetch(PDO::FETCH_ASSOC)) {?>
+								<tr>
+									<td><?php echo $orderbring['order_id'] ?></td>
+									<td><?php echo $orderbring['order_time'] ?></td>
+									<td>$ <?php echo $orderbring['order_total'] ?></td>
+									<td><a href="#"><button class="btn btn-primary btn-xs">Detail</button></a></td>
+								</tr>
+								<?php } ?>
 						</tbody>
 					</table>
 				</div>
