@@ -972,9 +972,40 @@ if (isset($_POST['bank_orderadd'])) {
         'order_total' => $_POST['order_total']		
     ));
     if ($insert) {
-        header("Location:../../orders.php?status=success");
+        echo $order_id = $db->lastInsertId();
+        echo "<hr>";
+        $user_id=$_POST['user_id'];
+        $basketcheck=$db->prepare("SELECT * FROM basket where user_id=:id");
+		$basketcheck->execute(array(
+			'id' => $user_id
+			));
+		while($basketbring=$basketcheck->fetch(PDO::FETCH_ASSOC)) {
+			$product_id=$basketbring['product_id']; 
+			$product_unit=$basketbring['product_unit'];
+
+            $productcheck=$db->prepare("SELECT * FROM product where product_id=:id");
+			$productcheck->execute(array(
+				'id' => $product_id
+				));
+			$productbring=$productcheck->fetch(PDO::FETCH_ASSOC);
+			$product_price=$productbring['product_price'];
+
+            $save=$db->prepare("INSERT INTO orders_detail SET
+                order_id=:order_id,
+                product_id=:product_id,	
+                product_price=:product_price,
+                product_unit=:product_unit
+            ");
+            $insert=$save->execute(array(
+                'order_id' => $order_id,
+                'product_id' => $product_id,
+                'product_price' => $product_price,
+                'product_unit' => $product_unit	
+            ));
+        }
+        //header("Location:../../orders.php?status=success");
 	} else {
-		header("Location:../../orders.php?status=error");
+		//header("Location:../../orders.php?status=error");
 	}
 }
 /*Order*/

@@ -36,6 +36,7 @@
 							$productbring=$productcheck->fetch(PDO::FETCH_ASSOC);
 							$total_price+=$productbring['product_price']*$basketbring['product_unit']; 
 					?>
+					<!--<input type="hidden" name="product_id[]" value="<?php echo $productbring['product_id'] ?>">-->
 					<tr>
 						<td><img src="images\demo-img.jpg" width="100" alt=""></td>
 						<td><?php echo $productbring['product_name'] ?></td>
