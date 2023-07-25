@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 24 Tem 2023, 20:23:21
+-- Üretim Zamanı: 25 Tem 2023, 19:00:23
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -197,6 +197,20 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`order_id`, `order_time`, `order_no`, `user_id`, `order_total`, `order_type`, `order_bank`, `order_pay`) VALUES
 (1000, '2023-07-24 20:20:12', NULL, 8, 9000.00, 'Bank Payment', 'QWERTY Bank', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `orders_detail`
+--
+
+CREATE TABLE `orders_detail` (
+  `orderdetail_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_price` float(9,2) NOT NULL,
+  `product_unit` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- --------------------------------------------------------
 
