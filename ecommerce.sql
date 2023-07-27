@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 25 Tem 2023, 19:47:10
+-- Üretim Zamanı: 27 Tem 2023, 16:57:42
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -79,18 +79,6 @@ CREATE TABLE `basket` (
   `product_id` int(11) NOT NULL,
   `product_unit` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
-
---
--- Tablo döküm verisi `basket`
---
-
-INSERT INTO `basket` (`basket_id`, `user_id`, `product_id`, `product_unit`) VALUES
-(1, 8, 1, 1),
-(2, 8, 5, 15),
-(3, 8, 5, 1),
-(4, 8, 5, 5),
-(5, 8, 5, 1),
-(8, 8, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -196,7 +184,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `order_time`, `order_no`, `user_id`, `order_total`, `order_type`, `order_bank`, `order_pay`) VALUES
-(1002, '2023-07-25 19:42:21', NULL, 8, 9000.00, 'Bank Payment', 'ABC Bank', '0');
+(1003, '2023-07-25 19:59:52', NULL, 8, 9000.00, 'Bank Payment', 'DEFG Bank', '0'),
+(1004, '2023-07-25 20:06:53', NULL, 8, 750.00, 'Bank Payment', 'ABC Bank', '0');
 
 -- --------------------------------------------------------
 
@@ -217,12 +206,13 @@ CREATE TABLE `orders_detail` (
 --
 
 INSERT INTO `orders_detail` (`orderdetail_id`, `order_id`, `product_id`, `product_price`, `product_unit`) VALUES
-(1, 1002, 1, 375.00, 1),
-(2, 1002, 5, 375.00, 15),
-(3, 1002, 5, 375.00, 1),
-(4, 1002, 5, 375.00, 5),
-(5, 1002, 5, 375.00, 1),
-(6, 1002, 5, 375.00, 1);
+(7, 1003, 1, 375.00, 1),
+(8, 1003, 5, 375.00, 15),
+(9, 1003, 5, 375.00, 1),
+(10, 1003, 5, 375.00, 5),
+(11, 1003, 5, 375.00, 1),
+(12, 1003, 5, 375.00, 1),
+(13, 1004, 1, 375.00, 2);
 
 -- --------------------------------------------------------
 
@@ -263,6 +253,19 @@ INSERT INTO `product` (`product_id`, `category_id`, `product_time`, `product_nam
 (11, 3, '2023-05-12 19:45:10', 'Product Name3', 'product-name3', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis vestibulum metus non pellentesque. Curabitur viverra nec augue vitae malesuada. Aenean a eros sed nibh consectetur porta id in nulla. Donec iaculis fringilla mollis. Nunc at justo nisl. Aenean lobortis interdum ex ac facilisis. Ut imperdiet tellus dolor, sit amet ornare nisi posuere sit amet. Nunc quis ante diam. Sed sit amet vehicula massa, nec venenatis erat. Maecenas malesuada urna faucibus enim volutpat, nec imperdiet neque maximus. Etiam aliquam, ante vel aliquam sollicitudin, nunc quam malesuada lectus, vitae congue elit metus sed lectus. Integer interdum gravida neque, in pharetra ante. Ut vitae quam ac risus elementum rutrum. Fusce vitae massa ipsum. Nam eu convallis diam. Cras dignissim tellus ipsum, at varius lorem volutpat quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices, purus a semper gravida, turpis orci cursus ex, ut vestibulum lacus diam non ex. Aliquam erat volutpat. Aenean auctor lacinia ex efficitur tempor.</p>', 375.00, 'test', 'product, price, stock, name ', 125, '1', 10, '0'),
 (12, 9, '2023-05-15 20:25:44', 'Product Namee3', 'product-namee3', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 421.00, 'test', 'product, price, stock, name ', 8, '1', 11, '1'),
 (13, 7, '2023-05-15 20:27:41', 'Productt Namee3', 'productt-namee3', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 583.00, 'test', 'product, price, stock, name ', 5, '1', 12, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `product_photo`
+--
+
+CREATE TABLE `product_photo` (
+  `productphoto_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `productphoto_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
+  `productphoto_order` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 -- --------------------------------------------------------
 
@@ -424,6 +427,12 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`);
 
 --
+-- Tablo için indeksler `product_photo`
+--
+ALTER TABLE `product_photo`
+  ADD PRIMARY KEY (`productphoto_id`);
+
+--
 -- Tablo için indeksler `setting`
 --
 ALTER TABLE `setting`
@@ -455,7 +464,7 @@ ALTER TABLE `bank`
 -- Tablo için AUTO_INCREMENT değeri `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `basket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `basket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `categories`
@@ -479,19 +488,25 @@ ALTER TABLE `menu`
 -- Tablo için AUTO_INCREMENT değeri `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1005;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `orders_detail`
 --
 ALTER TABLE `orders_detail`
-  MODIFY `orderdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `orderdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product`
 --
 ALTER TABLE `product`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `product_photo`
+--
+ALTER TABLE `product_photo`
+  MODIFY `productphoto_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `setting`
