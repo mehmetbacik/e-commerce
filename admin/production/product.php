@@ -54,6 +54,7 @@ $productcontrol->execute();
                   <th>Product Price</th>
                   <th>Product Stock</th>
                   <th>Product Order</th>
+                  <th>Product Images</th>
                   <th>Product Showcase</th>
                   <th>Product Status</th>
                   <th></th>
@@ -70,6 +71,7 @@ $productcontrol->execute();
                   <td><?php echo $productbring['product_price'] ?></td>
                   <td><?php echo $productbring['product_stock'] ?></td>
                   <td><?php echo $productbring['product_order'] ?></td>
+                  <td><center><a href="product-galery.php?product_id=<?php echo $productbring['product_id'] ?>"><button class="btn btn-xs btn-info">Image</button></a></center></td>
                   <td>
                     <center>
                       <?php 

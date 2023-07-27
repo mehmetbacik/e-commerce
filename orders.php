@@ -14,6 +14,9 @@
 							<tr>
 								<th>Order No</th>
 								<th>Date</th>
+								<th>Type</th>
+								<th>Bank</th>
+								<th>Status</th>
 								<th>Price</th>
 								<th></th>
 							</tr>
@@ -27,6 +30,9 @@
 								<tr>
 									<td><?php echo $orderbring['order_id'] ?></td>
 									<td><?php echo $orderbring['order_time'] ?></td>
+									<td><?php echo $orderbring['order_type'] ?></td>
+									<td><?php echo $orderbring['order_bank'] ?></td>
+									<td><?php echo $orderbring['order_status'] ?></td>
 									<td>$ <?php echo $orderbring['order_total'] ?></td>
 									<td><a href="#"><button class="btn btn-primary btn-xs">Detail</button></a></td>
 								</tr>
