@@ -1,5 +1,6 @@
 <?php 
 require_once 'header.php';
+error_reporting(E_ALL & ~E_NOTICE);
 ?>
 <!-- page content -->
 <div class="right_col" role="main">
@@ -29,7 +30,6 @@ require_once 'header.php';
               <div align="left" class="col-md-6">
               <h2>Product Photos Page<small>
                 <?php
-                echo $say."Listed.";
                 if ($_GET['status']=='success') {?> 
                 <b style="color:green;">Success...</b>
                 <?php } elseif ($_GET['status']=='error')  {?>
@@ -51,7 +51,7 @@ require_once 'header.php';
                 $sql->execute();
                 $total_productphoto=$sql->rowCount();
                 $total_page = ceil($total_productphoto / $pages);
-                $pages = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+                $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
                 if($page < 1) $page = 1; 
                 if($page > $total_page) $page = $total_page; 
                 $limit = ($page - 1) * $pages;
