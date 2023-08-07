@@ -1018,4 +1018,24 @@ if (isset($_POST['bank_orderadd'])) {
 }
 /*Order*/
 
+/*Photo Remove*/
+if(isset($_POST['productphoto-remove'])) {
+	$product_id=$_POST['product_id'];
+	echo $checklist = $_POST['productphoto_choose'];
+	foreach($checklist as $list) {
+		$remove=$db->prepare("DELETE from product_photo where productphoto_id=:productphoto_id");
+		$check=$remove->execute(array(
+			'productphoto_id' => $list
+			));
+	}
+	if ($check) {
+		Header("Location:../production/product-galery.php?product_id=$product_id&status=success");
+        exit;
+	} else {
+		Header("Location:../production/product-galery.php?product_id=$product_id&status=error");
+        exit;
+	}
+} 
+/*Photo Remove*/
+
 ?>
