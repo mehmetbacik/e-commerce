@@ -31,19 +31,32 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6">
+						<?php
+							$product_id=$productbring['product_id'];
+							$productphoto_control=$db->prepare("SELECT * FROM product_photo where product_id=:product_id order by productphoto_order ASC limit 1");
+							$productphoto_control->execute([
+								'product_id' => $product_id
+							]);
+							$productphoto_bring=$productphoto_control->fetch(PDO::FETCH_ASSOC);
+						?>
 						<div class="dt-img">
 							<div class="detpricetag"><div class="inner">$<?php echo $productbring['product_price']; ?></div></div>
-							<a class="fancybox" href="images\sample-1.jpg" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="images\sample-1.jpg" alt="" class="img-responsive"></a>
+							<a class="fancybox" href="<?php echo $productphoto_bring['productphoto_path']; ?>" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="<?php echo $productphoto_bring['productphoto_path']; ?>" alt="" class="img-responsive"></a>
 						</div>
+
+						<?php
+							$product_id=$productbring['product_id'];
+							$productphoto_control=$db->prepare("SELECT * FROM product_photo where product_id=:product_id order by productphoto_order ASC limit 1,6");
+							$productphoto_control->execute([
+								'product_id' => $product_id
+							]);
+							while($productphoto_bring=$productphoto_control->fetch(PDO::FETCH_ASSOC)) {
+						?>
 						<div class="thumb-img">
-							<a class="fancybox" href="images\sample-4.jpg" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="images\sample-4.jpg" alt="" class="img-responsive"></a>
+							<a class="fancybox" href="<?php echo $productphoto_bring['productphoto_path']; ?>" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="<?php echo $productphoto_bring['productphoto_path']; ?>" alt="" class="img-responsive"></a>
 						</div>
-						<div class="thumb-img">
-							<a class="fancybox" href="images\sample-5.jpg" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="images\sample-5.jpg" alt="" class="img-responsive"></a>
-						</div>
-						<div class="thumb-img">
-							<a class="fancybox" href="images\sample-1.jpg" data-fancybox-group="gallery" title="Cras neque mi, semper leon"><img src="images\sample-1.jpg" alt="" class="img-responsive"></a>
-						</div>
+						<?php } ?>
+
 					</div>
 					<div class="col-md-6 det-desc">
 						<div class="productdata">
