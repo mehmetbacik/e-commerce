@@ -41,12 +41,18 @@
 						}	
 											
 						while($productbring=$productcontrol->fetch(PDO::FETCH_ASSOC)) { 
+							$product_id=$productbring['product_id'];
+							$productphoto_control=$db->prepare("SELECT * FROM product_photo where product_id=:product_id order by productphoto_order ASC limit 1");
+							$productphoto_control->execute([
+								'product_id' => $product_id
+							]);
+							$productphoto_bring=$productphoto_control->fetch(PDO::FETCH_ASSOC);
 					?>
 					<div class="col-md-4">
 						<div class="productwrap">
 							<div class="pr-img">
 								<div class="hot"></div>
-								<a href="product-<?=seo($productbring["product_name"]).'-'.$productbring["product_id"]?>"><img src="http://via.placeholder.com/250x250" alt="" class="img-responsive"></a>
+								<a href="product-<?=seo($productbring["product_name"]).'-'.$productbring["product_id"]?>"><img src="<?php echo $productphoto_bring['productphoto_path']; ?>" alt="" class="img-responsive"></a>
 								<div class="pricetag on-sale"><div class="inner on-sale"><span class="onsale"><span class="oldprice">$<?php echo $productbring['product_price']*2 ?></span>$<?php echo $productbring['product_price'] ?></span></div></div>
 							</div>
 							<span class="smalltitle"><a href="#"><?php echo $productbring['product_name'] ?></a></span>
