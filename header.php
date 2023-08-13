@@ -46,12 +46,12 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
-  <div id="wrapper">
+</head>
+<body>
+<div id="wrapper">
 	<div class="header"><!--Header -->
 		<div class="container">
 			<div class="row">
@@ -105,11 +105,11 @@
 							<div class="srchwrap">
 								<div class="row">
 									<div class="col-md-12">
-										<form class="form-horizontal" role="form">
+										<form action="search.php" method="POST" class="form-horizontal" role="form">
 											<div class="form-group">
-												<label for="search" class="col-sm-2 control-label">Search</label>
+												<button name="search" class="btn btn-default btn-sm"><i class="fa fa-search"></i></button>
 												<div class="col-sm-10">
-													<input type="text" class="form-control" id="search">
+													<input type="text" name="research" minlength="3" class="form-control" id="search">
 												</div>
 											</div>
 										</form>

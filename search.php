@@ -1,12 +1,12 @@
     <?php 
 		require_once 'header.php';
 		if(isset($_POST['search'])) {
-			$productcontrol=$db->prepare("SELECT * FROM product WHERE product_name=:product_name");
+            $research=$_POST['research'];
+			$productcontrol=$db->prepare("SELECT * FROM product WHERE product_name LIKE ?");
 			$productcontrol->execute(
-				[
-					'product_name' => $product_name
-				]
+				array("%$research%")
 			);
+            $say=$productcontrol->rowCount();
 		} else {
 			header("Location:index.php?status=empty");
 		}
