@@ -55,6 +55,10 @@ code .
 - Start the PHP server (e.g., start Apache and MySQL in XAMPP control panel).
 - Open your browser and visit http://localhost/project-directory to run the project on your local PHP server.
 
+## Sample SQL Table
+
+Inside the repository, you'll find an ecommerce.sql file that contains a sample SQL table. You can use this table as a starting point for your project's database.
+
 ---
 
 Website: [https://github.com/mehmetbacik/e-commerce](https://github.com/mehmetbacik/e-commerce)
