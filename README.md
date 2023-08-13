@@ -25,11 +25,9 @@ This repository contains the source code of an E-Commerce website where products
 - JavaScript
 - PHP
 - SQL Database
-- [Framework/Library Name]
-- [Other Used Technologies]
 
 ---
 
 Website: [https://github.com/mehmetbacik/e-commerce](https://github.com/mehmetbacik/e-commerce)
 
-Admin: [https://github.com/mehmetbacik/e-commerce](https://github.com/mehmetbacik/e-commerce/admin)
+Admin: [https://github.com/mehmetbacik/e-commerce/admin](https://github.com/mehmetbacik/e-commerce/admin)
