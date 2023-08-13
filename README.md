@@ -26,6 +26,19 @@ This repository contains the source code of an E-Commerce website where products
 - PHP
 - SQL Database
 
+## Running a PHP Developed Project Locally
+
+In this guide, you can learn how to run a project developed with PHP locally, step by step. Below are the steps, from cloning the project to running it on a PHP server.
+
+### Step 1: Clone the Repository
+
+To clone the project, run the following commands:
+
+```bash
+git clone <project-repo-link>
+cd <project-directory>
+
+
 ---
 
 Website: [https://github.com/mehmetbacik/e-commerce](https://github.com/mehmetbacik/e-commerce)
