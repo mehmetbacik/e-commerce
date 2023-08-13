@@ -34,10 +34,26 @@ In this guide, you can learn how to run a project developed with PHP locally, st
 
 To clone the project, run the following commands:
 
-```bash
+```
 git clone <project-repo-link>
 cd <project-directory>
+```
 
+### Step 2: Open in Code Editor
+
+Open the project in your preferred code editor or IDE. For example:
+
+```
+code .
+```
+
+### Step 3: Running on PHP Server
+
+- If you don't have a PHP server installed on your computer, set up one using tools like XAMPP or WampServer.
+- Move the project to the root directory of your PHP server (e.g., htdocs in XAMPP, www in WampServer).
+- Create your database and configure connection settings to link the project to the database.
+- Start the PHP server (e.g., start Apache and MySQL in XAMPP control panel).
+- Open your browser and visit http://localhost/project-directory to run the project on your local PHP server.
 
 ---
 
