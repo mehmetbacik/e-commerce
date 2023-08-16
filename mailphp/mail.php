@@ -1,5 +1,5 @@
 <?
-include '../../admin/system/connect.php';
+require_once '../../admin/system/connect.php';
 require("class.phpmailer.php");
 
 if ($_POST['total']!=$_POST['process']) {
