@@ -36,6 +36,9 @@ To clone the project, run the following commands:
 
 ```
 git clone <project-repo-link>
+```
+
+```
 cd <project-directory>
 ```
 
