@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 27 Tem 2023, 16:57:42
+-- Üretim Zamanı: 13 Eyl 2023, 11:24:53
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -158,9 +158,9 @@ CREATE TABLE `menu` (
 
 INSERT INTO `menu` (`menu_id`, `menu_top`, `menu_name`, `menu_detail`, `menu_url`, `menu_order`, `menu_status`, `menu_seourl`) VALUES
 (1, '0', 'About', '', 'about', 0, '1', 'about'),
-(3, '0', 'Contact', '<p>Contact Page Content</p>', '', 3, '1', 'contact'),
+(3, '0', 'Contact', '<p>Contact Page Content</p>', 'contact', 3, '1', 'contact'),
 (4, '0', 'Categories', '<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>', 'categories', 1, '1', 'categories'),
-(7, '', 'Product', '<p>Menu Detail Content Text</p>', 'product', 4, '0', 'product');
+(7, '', 'Landing', '<p>Landing Page</p>', '', 4, '1', 'landing');
 
 -- --------------------------------------------------------
 
@@ -185,7 +185,8 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`order_id`, `order_time`, `order_no`, `user_id`, `order_total`, `order_type`, `order_bank`, `order_pay`) VALUES
 (1003, '2023-07-25 19:59:52', NULL, 8, 9000.00, 'Bank Payment', 'DEFG Bank', '0'),
-(1004, '2023-07-25 20:06:53', NULL, 8, 750.00, 'Bank Payment', 'ABC Bank', '0');
+(1004, '2023-07-25 20:06:53', NULL, 8, 750.00, 'Bank Payment', 'ABC Bank', '0'),
+(1005, '2023-08-12 11:46:15', NULL, 8, 583.00, 'Bank Payment', 'DEFG Bank', '0');
 
 -- --------------------------------------------------------
 
@@ -212,7 +213,8 @@ INSERT INTO `orders_detail` (`orderdetail_id`, `order_id`, `product_id`, `produc
 (10, 1003, 5, 375.00, 5),
 (11, 1003, 5, 375.00, 1),
 (12, 1003, 5, 375.00, 1),
-(13, 1004, 1, 375.00, 2);
+(13, 1004, 1, 375.00, 2),
+(14, 1005, 7, 583.00, 1);
 
 -- --------------------------------------------------------
 
@@ -252,7 +254,7 @@ INSERT INTO `product` (`product_id`, `category_id`, `product_time`, `product_nam
 (10, 6, '2023-05-15 20:27:41', 'Productt Namee2', 'productt-namee2', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 583.00, 'test', 'product, price, stock, name ', 5, '1', 9, '1'),
 (11, 3, '2023-05-12 19:45:10', 'Product Name3', 'product-name3', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque facilisis vestibulum metus non pellentesque. Curabitur viverra nec augue vitae malesuada. Aenean a eros sed nibh consectetur porta id in nulla. Donec iaculis fringilla mollis. Nunc at justo nisl. Aenean lobortis interdum ex ac facilisis. Ut imperdiet tellus dolor, sit amet ornare nisi posuere sit amet. Nunc quis ante diam. Sed sit amet vehicula massa, nec venenatis erat. Maecenas malesuada urna faucibus enim volutpat, nec imperdiet neque maximus. Etiam aliquam, ante vel aliquam sollicitudin, nunc quam malesuada lectus, vitae congue elit metus sed lectus. Integer interdum gravida neque, in pharetra ante. Ut vitae quam ac risus elementum rutrum. Fusce vitae massa ipsum. Nam eu convallis diam. Cras dignissim tellus ipsum, at varius lorem volutpat quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices, purus a semper gravida, turpis orci cursus ex, ut vestibulum lacus diam non ex. Aliquam erat volutpat. Aenean auctor lacinia ex efficitur tempor.</p>', 375.00, 'test', 'product, price, stock, name ', 125, '1', 10, '0'),
 (12, 9, '2023-05-15 20:25:44', 'Product Namee3', 'product-namee3', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 421.00, 'test', 'product, price, stock, name ', 8, '1', 11, '1'),
-(13, 7, '2023-05-15 20:27:41', 'Productt Namee3', 'productt-namee3', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 583.00, 'test', 'product, price, stock, name ', 5, '1', 12, '1');
+(13, 2, '2023-05-15 20:27:41', 'Fenerbahce 2023 Striped Jersey', 'fenerbahce-2023-striped-jersey', '<p>Integer eget purus lectus. In tempor, nisl sit amet suscipit mattis, ante lorem viverra lorem, sit amet dictum dui eros quis quam. Ut feugiat lobortis mi sit amet luctus. Morbi lobortis augue vitae magna ornare varius. Ut vestibulum nisl nec urna maximus, ac ultrices lectus condimentum. Morbi lacinia ultrices egestas. Nam quis orci imperdiet, rutrum nisi et, tempor justo. Suspendisse eu leo elit. Mauris ullamcorper lacinia vehicula. Integer est massa, feugiat eleifend consequat quis, tincidunt condimentum elit. Etiam at mattis urna. Nam sed nisl eu mi sodales varius vel a lacus.</p>', 583.00, 'test', 'product, price, stock, name ', 5, '1', 12, '1');
 
 -- --------------------------------------------------------
 
@@ -266,6 +268,29 @@ CREATE TABLE `product_photo` (
   `productphoto_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
   `productphoto_order` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+
+--
+-- Tablo döküm verisi `product_photo`
+--
+
+INSERT INTO `product_photo` (`productphoto_id`, `product_id`, `productphoto_path`, `productphoto_order`) VALUES
+(1, 13, 'images/product/208952749925167236186.jpg', 1),
+(2, 13, 'images/product/243912390227327250485.jpg', 2),
+(3, 13, 'images/product/316952120220115219034.jpg', 3),
+(4, 13, 'images/product/254022450130435257903.jpg', 4),
+(5, 13, 'images/product/212872289620513295612.jpg', 5),
+(6, 13, 'images/product/290842579320539252311.jpg', 6),
+(10, 12, 'images/product/24597226913180426831208952749925167236186.jpg', 0),
+(11, 11, 'images/product/31843275232842320424208952749925167236186.jpg', 0),
+(12, 10, 'images/product/23384301842776924904208952749925167236186.jpg', 0),
+(13, 9, 'images/product/25885296552127627895208952749925167236186.jpg', 0),
+(14, 8, 'images/product/30328230822076423285208952749925167236186.jpg', 0),
+(15, 7, 'images/product/25803273502180528817208952749925167236186.jpg', 0),
+(16, 6, 'images/product/28490275702375724936208952749925167236186.jpg', 0),
+(17, 5, 'images/product/20831304182005223201208952749925167236186.jpg', 0),
+(18, 4, 'images/product/22423279132282625326208952749925167236186.jpg', 0),
+(19, 3, 'images/product/27872210283133025567208952749925167236186.jpg', 0),
+(20, 1, 'images/product/26834304762741024999208952749925167236186.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -464,7 +489,7 @@ ALTER TABLE `bank`
 -- Tablo için AUTO_INCREMENT değeri `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `basket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `basket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `categories`
@@ -488,13 +513,13 @@ ALTER TABLE `menu`
 -- Tablo için AUTO_INCREMENT değeri `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1005;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1006;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `orders_detail`
 --
 ALTER TABLE `orders_detail`
-  MODIFY `orderdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `orderdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `product`
@@ -506,7 +531,7 @@ ALTER TABLE `product`
 -- Tablo için AUTO_INCREMENT değeri `product_photo`
 --
 ALTER TABLE `product_photo`
-  MODIFY `productphoto_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `productphoto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `setting`
