@@ -1,25 +1,5 @@
 ﻿	<?php 
 		require_once 'header.php';
-		if(isset($_GET['sef'])) {
-			$categorycontrol=$db->prepare("SELECT * FROM categories WHERE category_seourl=:seourl");
-			$categorycontrol->execute(
-				[
-					'seourl' => $_GET['sef']
-				]
-			);
-			$categorybring=$categorycontrol->fetch(PDO::FETCH_ASSOC);
-			$category_id=$categorybring['category_id'];
-
-			$productcontrol=$db->prepare("SELECT * FROM product WHERE category_id=:category_id order by product_order ASC");
-			$productcontrol->execute(
-				[
-					'category_id' => $category_id
-				]
-			);
-		} else {
-			$productcontrol=$db->prepare("SELECT * FROM product order by product_order ASC");
-			$productcontrol->execute();
-		}
 	?>
 	
 	<div class="container">
@@ -35,6 +15,40 @@
 				</div>
 				<div class="row prdct"><!--Products-->
 					<?php 
+						$onpage = 3; // Amount of content to be displayed on the page
+						$sqlsquery=$db->prepare("SELECT * FROM categories");
+						$sqlsquery->execute();
+						$total_content=$sqlsquery->rowCount();
+						$total_page = ceil($total_content / $onpage);
+						 // If the page is not entered, assume 1.
+						$pages = isset($_GET['pages']) ? (int) $_GET['pages'] : 1;
+						 // If a page number less than 1 is entered, make it 1.
+						if($pages < 1) $pages = 1; 
+						   // If more than our total number of pages are written, assume the last page.
+						if($pages > $total_page) $pages = $total_page; 
+						$limit = ($pages - 1) * $onpage;
+				
+						if(isset($_GET['sef'])) {
+							$categorycontrol=$db->prepare("SELECT * FROM categories WHERE category_seourl=:seourl");
+							$categorycontrol->execute(
+								[
+									'seourl' => $_GET['sef']
+								]
+							);
+							$categorybring=$categorycontrol->fetch(PDO::FETCH_ASSOC);
+							$category_id=$categorybring['category_id'];
+				
+							$productcontrol=$db->prepare("SELECT * FROM product WHERE category_id=:category_id order by product_order ASC limit $limit,$onpage");
+							$productcontrol->execute(
+								[
+									'category_id' => $category_id
+								]
+							);
+						} else {
+							$productcontrol=$db->prepare("SELECT * FROM product order by product_order ASC limit $limit,$onpage");
+							$productcontrol->execute();
+						}		
+
 						$check=$productcontrol->rowCount();
 						if ($check==0) {
 							echo "<div class='col-md-12'>No products found in this category.</div>";
@@ -60,18 +74,31 @@
 						</div>
 					</div>
 					<?php } ?>
+
+					<!--pagination-->
+						<div align="right" class="col-md-12">
+                     		<ul class="pagination">
+                     			<?php
+                     			$s=0;
+                     			while ($s < $total_page) {
+                     				$s++; ?>
+                     				<?php 
+                     				if ($s==$pages) { ?>
+                     				<li class="active">
+                     					<a href="categories?pages=<?php echo $s; ?>"><?php echo $s; ?></a>
+                     				</li>
+                     				<?php } else { ?>
+                     				<li>
+                     					<a href="categories?pages=<?php echo $s; ?>"><?php echo $s; ?></a>
+                     				</li>
+                     				<?php   }
+                     			}
+                     			?>
+                     		</ul>
+                     	</div>
+					<!--pagination-->
+
 				</div><!--Products-->
-
-				<ul class="pagination shop-pag"><!--pagination-->
-					<li><a href="#"><i class="fa fa-caret-left"></i></a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-				</ul><!--pagination-->
-
 			</div>
 			<?php require_once 'sidebar.php'; ?>
 		</div>
