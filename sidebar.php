@@ -5,12 +5,58 @@
 				<div class="categorybox">
 					<ul>
 						<?php 
-							$categorycontrol=$db->prepare("SELECT * FROM categories order by category_order ASC");
-							$categorycontrol->execute();
-							while($categorybring=$categorycontrol->fetch(PDO::FETCH_ASSOC)) {
+							// pull data to pass it to the array.
+							$query = "SELECT * FROM categories order by category_id";
+							$show = $db->prepare($query);
+							$show->execute(); //run query
+ 							$totalLineNumber = $show->rowCount(); //number of rows returned from the query
+							$allResults = $show->fetchAll(); //pass all rows and columns from the DB as an array to the variable $allResults
+							//number of categories without subcategories
+							$subCategoryNumber = 0;
+							for ($i = 0; $i < $totalLineNumber; $i++) {
+								if ($allResults[$i]['category_top'] == "0") {
+									$subCategoryNumber++;
+								}
+							}
+							for ($i = 0; $i < $totalLineNumber; $i++) {
+								if ($allResults[$i]['category_top'] == "0") {
+									categories($allResults[$i]['category_id'], $allResults[$i]['category_name'], $allResults[$i]['category_top']);
+								}
+							}
+							function categories($category_id, $category_name, $category_top) {
+							global $allResults;
+							global $totalLineNumber;
+    						//category, number of subcategories
+							$subCategoryNumber = 0;
+							for ($i = 0; $i < $totalLineNumber; $i++) {
+								if ($allResults[$i]['category_top'] == $category_id) {
+									$subCategoryNumber++;
+								}
+							}
 						?>
-						<li><a href="category-<?=seo($categorybring["category_name"])?>"><?php echo $categorybring['category_name'] ?></a></li>
-						<?php } ?>
+							<li>
+								<a href="category-<?=seo($category_name) ?>"><?php echo $category_name ?></a>
+									<?php 
+										if ($subCategoryNumber > 0) {
+											echo "( $subCategoryNumber )";
+										}
+									?>
+								</a>
+								<?php
+									if ($subCategoryNumber > 0) { //if there are subcategories, list them too
+										echo "<ul>";
+											for ($i = 0; $i < $totalLineNumber; $i++) {
+												if ($allResults[$i]['category_top'] == $category_id) {
+												categories($allResults[$i]['category_id'], $allResults[$i]['category_name'], $allResults[$i]['category_top']);
+											}
+										}
+										echo "</ul>";
+									}
+								?>
+							</li>
+						<?php 
+							}
+						?>
 					</ul>
 				</div>
 				
