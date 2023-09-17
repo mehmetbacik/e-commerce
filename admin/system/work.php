@@ -287,6 +287,13 @@ if ($_GET['sliderremove']=="approval") {
 /*Logo Edit*/
 if (isset($_POST['logoedit'])) {
 
+    if ($_FILES['setting_logo']['size']>1048576) {
+        echo "File size too big";
+        $_SESSION['status']="bigsize";
+		header("Location:../production/setting.php");
+        exit;
+    }
+
 	$uploads_dir = '../../images';
 	@$tmp_name = $_FILES['setting_logo']["tmp_name"];
 	@$name = $_FILES['setting_logo']["name"];
