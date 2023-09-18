@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 13 Eyl 2023, 11:24:53
+-- Üretim Zamanı: 18 Eyl 2023, 17:24:10
 -- Sunucu sürümü: 8.0.17
 -- PHP Sürümü: 7.3.10
 
@@ -106,7 +106,7 @@ INSERT INTO `categories` (`category_id`, `category_name`, `category_top`, `categ
 (4, 'Coats', 0, 'coats', 3, '1'),
 (5, 'Jeans', 0, 'jeans', 4, '1'),
 (6, 'Jacket', 0, 'jacket', 5, '1'),
-(7, 'Bag', 0, 'bag', 6, '1'),
+(7, 'Bag', 6, 'bag', 6, '1'),
 (9, 'Hat', 0, 'hat', 7, '1');
 
 -- --------------------------------------------------------

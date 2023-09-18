@@ -11,6 +11,7 @@ echo "</pre>";*/
 /*User-Save*/
 if (isset($_POST['usersave'])) { 
     $user_name=htmlspecialchars($_POST['user_name']);
+    //$user_name=strip_tags($_POST['user_name']); /TagsRemove/
     $user_mail=htmlspecialchars($_POST['user_mail']);
     $user_passwordone=htmlspecialchars($_POST['user_passwordone']);
     $user_passwordtwo=htmlspecialchars($_POST['user_passwordtwo']);
@@ -301,8 +302,6 @@ if (isset($_POST['logoedit'])) {
 		header("Location:../production/setting.php?status=unaccepted");
         exit;
     }
-    
-    
 
 	$uploads_dir = '../../images';
 	@$tmp_name = $_FILES['setting_logo']["tmp_name"];
