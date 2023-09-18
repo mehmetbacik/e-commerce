@@ -289,10 +289,20 @@ if (isset($_POST['logoedit'])) {
 
     if ($_FILES['setting_logo']['size']>1048576) {
         echo "File size too big";
-        $_SESSION['status']="bigsize";
-		header("Location:../production/setting.php");
+		header("Location:../production/setting.php?status=bigsize");
         exit;
     }
+
+    $authorized_extensions=array('jpg','png','gif','svg','webp');
+    $ext=strtolower(substr($_FILES['setting_logo']["name"],strpos($_FILES['setting_logo']["name"],'.')+1));
+    
+    if (in_array($ext, $authorized_extensions)=== false) {
+        echo "Unaccepted extension";
+		header("Location:../production/setting.php?status=unaccepted");
+        exit;
+    }
+    
+    
 
 	$uploads_dir = '../../images';
 	@$tmp_name = $_FILES['setting_logo']["tmp_name"];
