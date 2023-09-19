@@ -73,7 +73,11 @@
 									<input type="hidden" name="user_id" value="<?php echo $userbring['user_id'] ?>">
 									<input type="hidden" name="product_id" value="<?php echo $productbring['product_id'] ?>">
 									<div class="col-sm-4">
-										<button type="submit" name="addtocart" class="btn btn-default btn-red btn-sm"><span class="addchart">Add To Cart</span></button>
+										<?php if(isset($_SESSION['usercustomer_mail'])) { ?>
+											<button type="submit" name="addtocart" class="btn btn-default btn-red btn-sm"><span class="addchart">Add To Cart</span></button>
+										<?php } else { ?>
+											<button type="submit" disabled class="btn btn-default btn-red btn-sm"><span class="addchart">Login</span></button>
+										<?php } ?>
 									</div>
 									<div class="clearfix"></div>
 								</div>
