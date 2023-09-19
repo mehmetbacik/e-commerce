@@ -4,7 +4,9 @@ $sql=$db->prepare("SELECT * FROM menu WHERE menu_seourl=:sef");
 $sql->execute(['sef' => $_GET['sef']]);
 $menubring=$sql->fetch(PDO::FETCH_ASSOC);
 ?>
-	
+	<head>
+		<title><?php echo $menubring['menu_name'] ?> - <?php echo $settingbring['setting_title']; ?></title>
+	</head>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9"><!--Main content-->

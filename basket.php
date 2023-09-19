@@ -1,7 +1,9 @@
 ﻿	<?php 
 		require_once 'header.php';
 	?>
-
+	<head>
+		<title>Basket - <?php echo $settingbring['setting_title']; ?></title>
+	</head>
 	<div class="container">
 		<div class="clearfix"></div>
 		<div class="lines"></div>

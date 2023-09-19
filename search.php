@@ -11,7 +11,9 @@
 			header("Location:index.php?status=empty");
 		}
 	?>
-	
+	<head>
+		<title>Search - <?php echo $settingbring['setting_title']; ?></title>
+	</head>
 	<div class="container">
 		<div class="clearfix"></div>
 		<div class="lines"></div>

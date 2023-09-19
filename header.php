@@ -23,7 +23,6 @@
 	<meta name="keywords" content="<?php echo $settingbring['setting_keywords']; ?>">
 	<meta name="author" content="<?php echo $settingbring['setting_author']; ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $settingbring['setting_title']; ?></title>
 
     <!-- Fonts -->
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,400italic,700' rel='stylesheet' type='text/css'>

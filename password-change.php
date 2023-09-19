@@ -1,5 +1,7 @@
 <?php require_once 'header.php'; ?>
-
+<head>
+	<title>Password - <?php echo $settingbring['setting_title']; ?></title>
+</head>
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">

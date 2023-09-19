@@ -4,7 +4,9 @@ $sql=$db->prepare("SELECT * FROM about WHERE about_id=:id");
 $sql->execute(['id' => 1]);
 $aboutbring=$sql->fetch(PDO::FETCH_ASSOC);
 ?>
-	
+	<head>
+		<title>About - <?php echo $settingbring['setting_title']; ?></title>
+	</head>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9"><!--Main content-->

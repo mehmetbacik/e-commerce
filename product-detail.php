@@ -9,6 +9,9 @@
 			exit;	
 		}
 	?>
+	<head>
+		<title><?php echo $productbring['product_name'] ?> - <?php echo $settingbring['setting_title']; ?></title>
+	</head>
 	<?php 
 		if ($_GET['status']=="success") {
 	?>

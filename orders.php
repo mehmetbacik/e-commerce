@@ -1,5 +1,7 @@
 ﻿<?php require_once 'header.php'; ?>
-
+<head>
+	<title>Orders - <?php echo $settingbring['setting_title']; ?></title>
+</head>
 <div class="container">
 	<form action="admin/system/work.php" method="POST" class="form-horizontal checkout" role="form">
 		<div class="row">
