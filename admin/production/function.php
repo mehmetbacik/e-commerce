@@ -2,6 +2,12 @@
 ob_start();
 //session_start();
 
+function commandcontrol() {
+    if (empty($_SESSION['user_mail'])) {
+        header("Location:../../?status=blocked");
+        exit;
+    }
+}
 
 function seo($str, $options = array())
 {

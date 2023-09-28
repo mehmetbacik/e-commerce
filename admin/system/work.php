@@ -4,9 +4,6 @@ session_start();
 error_reporting(0);
 require_once 'connect.php';
 require_once '../production/function.php';
-/*echo "<pre>";
-print_r($_POST);
-echo "</pre>";*/
 
 /*User-Save*/
 if (isset($_POST['usersave'])) { 
@@ -264,6 +261,8 @@ if (isset($_POST['slideredit'])) {
 
 /*Slider Remove*/
 if ($_GET['sliderremove']=="approval") {
+
+    commandcontrol();
 	
 	$remove=$db->prepare("DELETE from slider where slider_id=:slider_id");
 	$control=$remove->execute(
@@ -464,6 +463,7 @@ if (isset($_POST['useredit_save'])) {
 
 /*User-Remove*/
 if ($_GET['userremove']=="approval") {
+    commandcontrol();
 	$userremove=$db->prepare("DELETE from user where user_id=:id");
 	$usercontrol=$userremove->execute(array(
 		'id' => $_GET['user_id']
@@ -514,6 +514,7 @@ if (isset($_POST['menuedit_save'])) {
 
 /*Menu-Remove*/
 if ($_GET['menuremove']=="approval") {
+    commandcontrol();
 	$menuremove=$db->prepare("DELETE from menu where menu_id=:id");
 	$menucontrol=$menuremove->execute(array(
 		'id' => $_GET['menu_id']
@@ -592,6 +593,7 @@ if (isset($_POST['categoryedit_save'])) {
 
 /*Category-Remove*/
 if ($_GET['categoryremove']=="approval") {
+    commandcontrol();
 	$categoryremove=$db->prepare("DELETE from categories where category_id=:id");
 	$categorycontrol=$categoryremove->execute(array(
 		'id' => $_GET['category_id']
@@ -634,6 +636,7 @@ if (isset($_POST['categoryadd'])) {
 
 /*Product-Remove*/
 if ($_GET['productremove']=="approval") {
+    commandcontrol();
 	$productremove=$db->prepare("DELETE from product where product_id=:id");
 	$productcontrol=$productremove->execute(array(
 		'id' => $_GET['product_id']
@@ -816,6 +819,7 @@ if ($_GET['comment_status']=="passive") {
 
 /*Comment-Remove*/
 if ($_GET['commentremove']=="approval") {
+    commandcontrol();
 	$commentremove=$db->prepare("DELETE from comments where comment_id=:id");
 	$commentcontrol=$commentremove->execute(array(
 		'id' => $_GET['comment_id']
@@ -913,6 +917,7 @@ if (isset($_POST['bankedit_save'])) {
 
 /*Bank-Remove*/
 if ($_GET['bankremove']=="approval") {
+    commandcontrol();
 	$bankremove=$db->prepare("DELETE from bank where bank_id=:id");
 	$bankcontrol=$bankremove->execute(array(
 		'id' => $_GET['bank_id']
@@ -1036,6 +1041,7 @@ if (isset($_POST['bank_orderadd'])) {
 
 /*Photo Remove*/
 if(isset($_POST['productphoto-remove'])) {
+    commandcontrol();
 	$product_id=$_POST['product_id'];
 	echo $checklist = $_POST['productphoto_choose'];
 	foreach($checklist as $list) {
